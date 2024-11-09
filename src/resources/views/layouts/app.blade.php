@@ -13,7 +13,7 @@
         <header class="header">
             <h1 class="header__heading">
                 <a href="https://localhost/">
-                    <img src="file:///C:/Users/nanami/Downloads/CoachTech_White%201.svg" alt="COACHTECH">   
+                    <img src="img/logo.svg" alt="COACHTECH" >   
                 </a>
             </h1> 
             @yield('link')
