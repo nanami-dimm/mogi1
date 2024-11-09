@@ -66,3 +66,7 @@
         text-decoration-skip-ink: none;
         color: #0073CC;
 }
+
+.login-form__error-message {
+    color: #FF9494;
+}
