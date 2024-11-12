@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Conrollers\ItemController;
+use App\Http\Controllers\ItemController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +15,6 @@ use App\Http\Conrollers\ItemController;
 Route::middleware('auth')->group(function(){
     Route::get('/', [ItemController::class, 'index']);
 
-    
+    Route::get('/', [ItemController::class,'sell']);
 });
 

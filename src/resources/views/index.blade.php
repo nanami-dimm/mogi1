@@ -36,7 +36,7 @@
         </div>
     </div> 
     <div class="product-row">
-        @foreach ($Exhibitions as $Exhibition )
+        @foreach ($exhibitions as $exhibition )
         <div class="product-content">
             <a href="/item/{{ $Exhibition->id}}" class="product-link"></a>
             <img src="{{ asset($Exhibition ->product_image) }}" alt="商品画像" class="product-image">

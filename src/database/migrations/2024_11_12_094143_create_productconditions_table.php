@@ -15,7 +15,7 @@ class CreateProductconditionsTable extends Migration
     {
         Schema::create('productconditions', function (Blueprint $table) {
             $table->id();
-            $table->integer('condition');
+            $table->string('condition');
             $table->timestamps();
         });
     }

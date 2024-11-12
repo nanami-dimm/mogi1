@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Exhibition;
 
 class ItemController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $exhibitions = Exhibition::all();
+
+        return view('index',compact('exhibitions'));
     }
 
     public function mylist()
@@ -16,5 +19,10 @@ class ItemController extends Controller
         return view('');
     }
 
+    public function sell()
+    {
+        $category = Category::all();
+        return view('sell', compact('category'));
+    }
 
 }
