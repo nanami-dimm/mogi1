@@ -1,0 +1,147 @@
+.toppage-header-search {
+    width: 563px;
+        height: 80px;
+        left: 475px;
+        gap: 0px;
+        opacity: 0px;
+}
+
+.search-form {
+    width: 500px;
+        height: 50px;
+        top: 15px;
+        left: 31px;
+        gap: 0px;
+        border-radius: 5px 0px 0px 0px;
+        opacity: 0px;
+        background: #FFFFFF;
+}
+
+.search-form__keyword-input {
+    font-family: Inter;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 29.05px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+}
+
+.header_link {
+    font-family: Inter;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 29.05px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#ffffff;
+}
+
+.mypage__link {
+    font-family: Inter;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 29.05px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#FFFFFF;
+}
+
+.sell__link {
+    width: 100px;
+        height: 50px;
+        top: 18px;
+        left: 337px;
+        gap: 0px;
+        border-radius: 4px 0px 0px 0px;
+        opacity: 0px;
+        background: #FFFFFF;
+        font-family: Inter;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 29.05px;
+            text-align: center;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color:#000000;
+}
+
+.profile-form__heading {
+    font-family: Inter;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 43.57px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+}
+
+.profile-image {
+    width: 150px;
+        height: 150px;
+        top: 233px;
+        left: 416px;
+        gap: 0px;
+        opacity: 0px;
+        background: #D9D9D9;
+}
+
+.profile-image-file {
+    width: 179px;
+        height: 49px;
+        top: 284px;
+        left: 606px;
+        gap: 0px;
+        border-radius: 10px 0px 0px 0px;
+        opacity: 0px;
+        border: 2px solid #FF5555;
+        color:#FF5555;
+}
+
+.edit-form__error-message {
+    color:#FF5555;
+}
+
+.edit-form__label {
+    font-family: Inter;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 29.05px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+}
+
+.edit-form__input {
+    width: 680px;
+        height: 55px;
+        top: 496px;
+        left: 416px;
+        gap: 0px;
+        border-radius: 4px 0px 0px 0px;
+        border: 1px 0px 0px 0px;
+        opacity: 0px;
+        border: 1px solid #5F5F5F;
+}
+
+.edit-form__btn {
+    width: 680px;
+        height: 60px;
+        gap: 0px;
+        border-radius: 5px 0px 0px 0px;
+        opacity: 0px;
+        background: #FF5555;
+        font-family: Inter;
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 31.47px;
+            text-align: center;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color:#FFFFFF;
+}

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/index.css')}}">
+<link rel="stylesheet" href="{{ asset('css/profile.css')}}">
 @endsection
 
 @section('link')
@@ -27,23 +27,18 @@
 @endsection
 
 @section('content')
-    <div class="toppage-list">
-        <div class="best-list">
-            <input class="best_list-btn" type="submit" value="おすすめ">
-        </div>
-        <div class="my-list">
-            <input class="my-list_btn" type="submit" value="マイリスト">
-        </div>
-    </div> 
-    <div class="product-row">
-        @foreach ($exhibitions as $exhibition )
-        <div class="product-content">
-            <a href="/item/{{ $Exhibition->id}}" class="product-link"></a>
-            <img src="{{ asset($Exhibition ->product_image) }}" alt="商品画像" class="product-image">
-            <div class="product-detail">
-                <p>{{ $Exhibition ->product_name}}</p>
-            </div>
+    <div class="user-info">
+        @foreach ($profileimages as $profileimage )
+        <div class="user-image">
+            <img src="{{ asset($profileimage->profile_image) }}"  class="img-content">
         </div>
         @endforeach
-    </div>
-    @endsection('content')
+
+        @foreach ($profiles as $profile)
+        <div class="user-name">
+            <p>{{ asset($profile->name) }}</p>
+        </div>
+        <div class="profile_edit">
+            <input class="edit-form__btn btn" type="submit" href="/mypage/edit"  value="プロフィールを編集">
+        </div>
+        
