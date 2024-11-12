@@ -10,4 +10,11 @@ class ItemController extends Controller
     {
         return view('index');
     }
+
+    public function mylist()
+    {
+        return view('');
+    }
+
+
 }
