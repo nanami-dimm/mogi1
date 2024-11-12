@@ -1,0 +1,134 @@
+.toppage-header-search {
+    width: 563px;
+    height: 80px;
+    left: 475px;
+    gap: 0px;
+    opacity: 0px;
+}
+
+.search-form {
+    width: 500px;
+    height: 50px;
+    top: 15px;
+    left: 31px;
+    gap: 0px;
+    border-radius: 5px 0px 0px 0px;
+    opacity: 0px;
+    background: #FFFFFF;
+}
+
+.search-form__keyword-input {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+}
+
+.header_link {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #ffffff;
+}
+
+.mypage__link {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #FFFFFF;
+}
+
+.sell__link {
+    width: 100px;
+    height: 50px;
+    top: 18px;
+    left: 337px;
+    gap: 0px;
+    border-radius: 4px 0px 0px 0px;
+    opacity: 0px;
+    background: #FFFFFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+}
+
+.best_list-btn {
+    font-family: Inter;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 29.05px;
+        text-align: right;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#5F5F5F;
+}
+
+.my-list_btn {
+    font-family: Inter;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 29.05px;
+        text-align: right;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#FF0000;
+}
+
+.toppage-list {
+    width: 1512px;
+        height: 0px;
+        top: 47px;
+        gap: 0px;
+        border: 2px 0px 0px 0px;
+        opacity: 0px;
+        angle: 0.08 deg;
+        border: 2px solid #5F5F5F;
+}
+
+.product-link {
+    width: 290px;
+        height: 281.27px;
+        gap: 0px;
+        border-radius: 4px 0px 0px 0px;
+        opacity: 0px;
+        background: #D9D9D9;
+}
+
+.product-image {
+    font-family: Inter;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 48.41px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+}
+
+.product-detail {
+    font-family: Inter;
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 30.26px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+}

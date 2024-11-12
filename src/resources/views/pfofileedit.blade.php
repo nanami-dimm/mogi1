@@ -44,10 +44,10 @@
             </p>
         </div>
         <div class="edit-form_group">
-            <label class="edit-form__label" for="yousername">ユーザー名</label>
-            <input class="edit-form__input" type="text" name="yousername" id="yousername" value="{{ old('yousername') }}" >
+            <label class="edit-form__label" for="username">ユーザー名</label>
+            <input class="edit-form__input" type="text" name="username" id="username" value="{{ old('username') }}" >
             <p class="edit-form__error-message">
-          @error('yousername')
+          @error('username')
           {{ $message }}
           @enderror
             </p>

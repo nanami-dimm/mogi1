@@ -32,16 +32,16 @@
             <input class="best_list-btn" type="submit" value="おすすめ">
         </div>
         <div class="my-list">
-            <input class="my-list_btn" type="submit" value="マイページ">
+            <input class="my-list_btn" type="submit" value="マイリスト">
         </div>
     </div> 
     <div class="product-row">
         @foreach ($Exhibitions as $Exhibition )
         <div class="product-content">
             <a href="/item/{{ $Exhibition->id}}" class="product-link"></a>
-            <img src="{{ asset($Exhibition ->image) }}" alt="商品画像" class="product-image">
+            <img src="{{ asset($Exhibition ->product_image) }}" alt="商品画像" class="product-image">
             <div class="product-detail">
-                <p>{{ $Exhibition ->name}}</p>
+                <p>{{ $Exhibition ->product_name}}</p>
             </div>
         </div>
         @endforeach
