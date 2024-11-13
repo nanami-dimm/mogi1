@@ -16,7 +16,7 @@ class CreateExhibitionsTable extends Migration
         Schema::create('exhibitions', function (Blueprint $table) {
             $table->id();
             
-            $table->foreignId('condition_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('productcondition_id')->constrained()->cascadeOnDelete();
             $table->string('product_name');
             $table->text('product_description');
             $table->string('product_image');

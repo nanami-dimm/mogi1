@@ -1,4 +1,4 @@
-d@extends('layouts.app')
+@extends('layouts.app')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/sell.css')}}">
@@ -37,13 +37,25 @@ d@extends('layouts.app')
             </label>
             <img src="/storage" class="exhibited-products-image__frame">
             <input class="exhibited-products-image__btn" type="file" name="image" id="image" value="画像を選択する">
+            <p class="sell-form__error-message">
+          @error('image')
+          {{ $message }}
+          @enderror
+                </p>
         </div>
         <div class="exhibited-product-detail-area">
             <label class="exhibited-product-product-detail" for="detail">商品の詳細</label>
 
             <div class="exhibited-products-category-area">
                 <label class="product__label" for="category">カテゴリー</label>
+                @foreach($categories as $category)
                 <input  class="category__content" type="radio" name="category" id="category" value="{{ $category->product_category}}" >
+                @endforeach
+                <p class="sell-form__error-message">
+          @error('category')
+          {{ $message }}
+          @enderror
+                </p>
             </div>
 
             <div class="exhibited-product-status">
@@ -56,6 +68,11 @@ d@extends('layouts.app')
                     </option>
                     @endforeach
                     </select>
+                    <p class="sell-form__error-message">
+            @error('condition')
+            {{ $message }}
+            @enderror
+                </p>
             </div>
 
             <div class="exhibited-product-name-explain">
@@ -65,16 +82,31 @@ d@extends('layouts.app')
             <div class="exhibited-product-name">
                 <label class="product-name" for="product-name">商品名</label>
                 <input class="product-name__input" type="text" name="product-name" id="product-name">
+                <p class="sell-form__error-message">
+          @error('name')
+          {{ $message }}
+          @enderror
+                </p>
             </div>
 
             <div class="exhibited-product-explain">
                 <label class="product-explain" for="product-explain">商品の説明</label>
                 <input class="product-explain__input" type="text" name="product-explain" id="product-explain">
+                <p class="sell-form__error-message">
+          @error('explain')
+          {{ $message }}
+          @enderror
+                </p>
             </div>
 
             <div class="exhibited-product-price">
                 <label class="product-price" for="product-price">販売価格</label>
                 <input class="product-price__input" type="text" name="product-price" id="product-price" placeholder="￥">
+                <p class="sell-form__error-message">
+          @error('price')
+          {{ $message }}
+          @enderror
+                </p>
             </div>
 
             <input class="sell-form_btn btn" type="submit" value="出品する">

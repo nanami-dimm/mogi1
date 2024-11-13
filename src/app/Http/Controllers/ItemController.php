@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Exhibition;
+use App\Models\Category;
+use App\Models\Productcondition;
 
 class ItemController extends Controller
 {
@@ -21,8 +23,9 @@ class ItemController extends Controller
 
     public function sell()
     {
-        $category = Category::all();
-        return view('sell', compact('category'));
+        $categories = Category::all();
+        $conditions = Productcondition::all();
+        return view('sell', compact('categories', 'conditions'));
     }
 
 }

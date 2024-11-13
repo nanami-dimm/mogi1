@@ -15,6 +15,6 @@ use App\Http\Controllers\ItemController;
 Route::middleware('auth')->group(function(){
     Route::get('/', [ItemController::class, 'index']);
 
-    Route::get('/', [ItemController::class,'sell']);
+    Route::get('/sell', [ItemController::class,'sell']);
 });
 
