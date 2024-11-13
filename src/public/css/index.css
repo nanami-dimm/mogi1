@@ -1,16 +1,17 @@
 .toppage-header-search {
-    width: 563px;
-    height: 80px;
+    width: 1515px;
+        height: 82px;
+        gap: 0px;
+        opacity: 0px;
     
     
 }
 
 .search-form {
-    width: 500px;
-    height: 50px;
-    
-    
-    border-radius: 5px 0px 0px 0px;
+    width: 1515px;
+        height: 82px;
+        gap: 0px;
+        opacity: 0px;
     
     
 }
