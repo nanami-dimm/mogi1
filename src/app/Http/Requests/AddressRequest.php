@@ -24,7 +24,10 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'post_code' => 'required', 'regex:/^[0-9-]+$/', 'max:8',
+            'address' => 'required',
+            'building' => 'required',
         ];
     }
 }
