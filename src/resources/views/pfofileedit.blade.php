@@ -36,27 +36,27 @@
             <img src="storage/img">
         </div>
         <div class="profile-image-file">
-            <input type="file" id="image" name="image" accept="image/png, image/jpeg">
+            <input type="file" id="profile_image" name="profile_image" accept="image/png, image/jpeg">
             <p class="edit-form__error-message">
-          @error('image')
+          @error('profile_image')
           {{ $message }}
           @enderror
             </p>
         </div>
         <div class="edit-form_group">
-            <label class="edit-form__label" for="username">ユーザー名</label>
-            <input class="edit-form__input" type="text" name="username" id="username" value="{{ old('username') }}" >
+            <label class="edit-form__label" for="name">ユーザー名</label>
+            <input class="edit-form__input" type="text" name="name" id="name" value="{{ old('name') }}" >
             <p class="edit-form__error-message">
-          @error('username')
+          @error('name')
           {{ $message }}
           @enderror
             </p>
         </div>
         <div class="edit-form_group">
-            <label class="edit-form__label" for="postcode">郵便番号</label>
-            <input class="edit-form__input" type="text" name="postcode" id="postcode" value="{{ old('postcode') }}" >
+            <label class="edit-form__label" for="post_code">郵便番号</label>
+            <input class="edit-form__input" type="text" name="post_code" id="post_code" value="{{ old('post_code') }}" >
             <p class="edit-form__error-message">
-          @error('postcode')
+          @error('post_code')
           {{ $message }}
           @enderror
             </p>

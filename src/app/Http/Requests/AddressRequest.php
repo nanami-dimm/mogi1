@@ -30,4 +30,15 @@ class AddressRequest extends FormRequest
             'building' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => '名前を入力してください',
+            'post_code.required' => '郵便番号を入力してください',
+            'post_code.regex' => '郵便番号はハイフン(-)ありの8文字で入力してください',
+            'address.required' => '住所を入力してください',
+            'building.required' => '建物名を入力してください',
+        ];
+    }
 }

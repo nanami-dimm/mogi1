@@ -33,12 +33,12 @@
     <form action="/" method="get">
         @csrf
         <div class="exhibites-products-image">
-            <label class="product_label" for="image">商品画像
+            <label class="product_label" for="product_image">商品画像
             </label>
             <img src="/storage" class="exhibited-products-image__frame">
-            <input class="exhibited-products-image__btn" type="file" name="image" id="image" value="画像を選択する">
+            <input class="exhibited-products-image__btn" type="file" name="product_image" id="product_image" value="画像を選択する">
             <p class="sell-form__error-message">
-          @error('image')
+          @error('product_image')
           {{ $message }}
           @enderror
                 </p>
@@ -47,12 +47,12 @@
             <label class="exhibited-product-product-detail" for="detail">商品の詳細</label>
 
             <div class="exhibited-products-category-area">
-                <label class="product__label" for="category">カテゴリー</label>
+                <label class="product__label" for="product_category">カテゴリー</label>
                 @foreach($categories as $category)
-                <input  class="category__content" type="radio" name="category" id="category" value="{{ $category->product_category}}" >
+                <input  class="category__content" type="radio" name="product_category" id="product_category" value="{{ $category->product_category}}" >
                 @endforeach
                 <p class="sell-form__error-message">
-          @error('category')
+          @error('product_category')
           {{ $message }}
           @enderror
                 </p>
@@ -80,30 +80,30 @@
             </div>
 
             <div class="exhibited-product-name">
-                <label class="product-name" for="product-name">商品名</label>
-                <input class="product-name__input" type="text" name="product-name" id="product-name">
+                <label class="product-name" for="product_name">商品名</label>
+                <input class="product-name__input" type="text" name="product_name" id="product_name">
                 <p class="sell-form__error-message">
-          @error('name')
+          @error('product_name')
           {{ $message }}
           @enderror
                 </p>
             </div>
 
-            <div class="exhibited-product-explain">
-                <label class="product-explain" for="product-explain">商品の説明</label>
-                <input class="product-explain__input" type="text" name="product-explain" id="product-explain">
+            <div class="exhibited-product_description">
+                <label class="product_description" for="product_description">商品の説明</label>
+                <input class="product_description__input" type="text" name="product_description" id="product_description">
                 <p class="sell-form__error-message">
-          @error('explain')
+          @error('product_description')
           {{ $message }}
           @enderror
                 </p>
             </div>
 
             <div class="exhibited-product-price">
-                <label class="product-price" for="product-price">販売価格</label>
-                <input class="product-price__input" type="text" name="product-price" id="product-price" placeholder="￥">
+                <label class="product-price" for="product_price">販売価格</label>
+                <input class="product-price__input" type="text" name="product_price" id="product_price" placeholder="￥">
                 <p class="sell-form__error-message">
-          @error('price')
+          @error('product_price')
           {{ $message }}
           @enderror
                 </p>
