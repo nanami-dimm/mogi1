@@ -13,14 +13,14 @@
         </form>
     </div>
     <div class="toppage-header-nav">
-
+    @if (Auth::check())
         <from action="/logout" method="post">
         @csrf
-            <input class="header_link" type="submit" value="ログアウト">
+            <button class="logout-button">ログアウト</button>
         </form>
 
         <a class="mypage__link" href="/?tab=mypage">マイページ</a>
-        
+    @endif
         <a class="sell__link" href="/sell">出品</a>
     </div>
 </div>

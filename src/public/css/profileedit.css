@@ -28,15 +28,14 @@
         color:#000000;
 }
 
-.header_link {
+.logout-button {
     font-family: Inter;
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 29.05px;
-        text-align: center;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#ffffff;
+    font-size: 24px;
+
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
 }
 
 .mypage__link {

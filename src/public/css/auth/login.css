@@ -1,10 +1,11 @@
 .login-form {
-    width: 680px;
-        height: 656px;
-        top: 200px;
-        left: 416px;
-        gap: 0px;
-        opacity: 0px;
+    text-align: center;
+       
+}
+
+label {
+    display: inline-block;
+        
 }
 
 .login-form__heading{
@@ -17,14 +18,20 @@
         color:#000000;
 }
 
+
 .login-form__label {
-    font-family: Inter;
+        width:680px;
+        font-family: Inter;
         font-size: 24px;
-        
+        font-weight: 700;
+        line-height: 29.05px;
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
         color:#000000;
+        display: block;
+        margin-inline: auto;
+
 }
 
 .login-form__input {
@@ -36,6 +43,8 @@
         border-radius: 4px 0px 0px 0px;
         border: 1px 0px 0px 0px;
         opacity: 0px;
+        display: block;
+            margin-inline: auto;
 }
 
 .login-form__btn  {

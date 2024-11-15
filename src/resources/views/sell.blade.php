@@ -75,12 +75,12 @@
                 </p>
             </div>
 
-            <div class="exhibited-product-name-explain">
+            <div class="product-name_explain">
                 <label class="exhibited-product-product-name-explain__label" for="name-explain">商品名と説明</label>
             </div>
 
             <div class="exhibited-product-name">
-                <label class="product-name" for="product_name">商品名</label>
+                <label class="product-label" for="product_name">商品名</label>
                 <input class="product-name__input" type="text" name="product_name" id="product_name">
                 <p class="sell-form__error-message">
           @error('product_name')
@@ -90,7 +90,7 @@
             </div>
 
             <div class="exhibited-product_description">
-                <label class="product_description" for="product_description">商品の説明</label>
+                <label class="product_label" for="product_description">商品の説明</label>
                 <input class="product_description__input" type="text" name="product_description" id="product_description">
                 <p class="sell-form__error-message">
           @error('product_description')
@@ -99,8 +99,8 @@
                 </p>
             </div>
 
-            <div class="exhibited-product-price">
-                <label class="product-price" for="product_price">販売価格</label>
+            <div class="exhibited-product_price">
+                <label class="product-label" for="product_price">販売価格</label>
                 <input class="product-price__input" type="text" name="product_price" id="product_price" placeholder="￥">
                 <p class="sell-form__error-message">
           @error('product_price')
