@@ -29,20 +29,22 @@
 @section('content')
 <div class="profile-edit-form">
     <h2 class="profile-form__heading content__heading">プロフィール設定</h2>
-    <form action="/mypage/profile" method="get">
+    <form action="/" method="post">
         @csrf
     <div class="profile-edit-form__inner">
+        <div class="profile-edit-form-image">
         <div class="profile-image">
             <img src="storage/img">
         </div>
         <div class="profile-image-file">
-            <input type="file" id="profile_image" name="profile_image" accept="image/png, image/jpeg">
+            <input type="file" id="profile_image" name="profile_image" accept="image/png, image/jpeg" placeholder="画像を選択する">
             <p class="edit-form__error-message">
           @error('profile_image')
           {{ $message }}
           @enderror
             </p>
         </div>
+    </div>
         <div class="edit-form_group">
             <label class="edit-form__label" for="name">ユーザー名</label>
             <input class="edit-form__input" type="text" name="name" id="name" value="{{ old('name') }}" >
@@ -79,7 +81,7 @@
           @enderror
                 </p>
             </div>
-            <input class="edit-form__btn btn" type="submit" href="/"  value="登録する">
+            <input class="edit-form__btn btn" type="submit"  value="登録する">
         </form>
     </div>
 </div>

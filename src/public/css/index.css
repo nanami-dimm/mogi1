@@ -1,19 +1,24 @@
+.toppage-header {
+    display: flex;
+}
+
 .toppage-header-search {
-    width: 1515px;
-        height: 82px;
-        gap: 0px;
-        opacity: 0px;
-    
-    
+    width: 563px;
+    height: 80px;
+    left: 475px;
+    gap: 0px;
+    opacity: 0px;
 }
 
 .search-form {
-    width: 1515px;
-        height: 82px;
-        gap: 0px;
-        opacity: 0px;
-    
-    
+    width: 500px;
+    height: 50px;
+    top: 15px;
+    left: 31px;
+    gap: 0px;
+    border-radius: 5px 0px 0px 0px;
+    opacity: 0px;
+    background: #FFFFFF;
 }
 
 .search-form__keyword-input {
@@ -26,22 +31,23 @@
     text-decoration-skip-ink: none;
     color: #000000;
 }
+
 .logout-button {
     font-family: Inter;
-        font-size: 24px;
-        
-        text-align: center;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#000000;
+    font-size: 24px;
+
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
 }
-
-
 
 .mypage__link {
     font-family: Inter;
     font-size: 24px;
-    
+    font-weight: 400;
+    line-height: 29.05px;
+    text-align: center;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     color: #FFFFFF;
@@ -50,41 +56,28 @@
 .sell__link {
     width: 100px;
     height: 50px;
-    
+    top: 18px;
+    left: 337px;
+    gap: 0px;
     border-radius: 4px 0px 0px 0px;
     opacity: 0px;
     background: #FFFFFF;
     font-family: Inter;
     font-size: 24px;
     font-weight: 400;
-    
+    line-height: 29.05px;
+    text-align: center;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     color: #000000;
 }
 
-.best_list-btn {
-    font-family: Inter;
-        font-size: 24px;
-        
-        text-align: right;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#5F5F5F;
-}
-
-.my-list_btn {
-    font-family: Inter;
-        font-size: 24px;
-        font-weight: 700;
-        line-height: 29.05px;
-        text-align: right;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#FF0000;
-}
-
 .toppage-list {
+
+    height: 47px;
+    top: 127px;
+    gap: 0px;
+    opacity: 0px;
     width: 1512px;
         height: 0px;
         top: 47px;
@@ -93,6 +86,33 @@
         opacity: 0px;
         angle: 0.08 deg;
         border: 2px solid #5F5F5F;
+}
+
+.best_list-btn {
+    width: 155px;
+        height: 40px;
+        
+    font-family: Inter;
+    font-size: 24px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #5F5F5F;
+    display: inline;
+}
+
+.my-list_btn {
+    width: 155px;
+        height: 40px;
+        
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #FF0000;
+    display: inline;
 }
 
 .product-link {

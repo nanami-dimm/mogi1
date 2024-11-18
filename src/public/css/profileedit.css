@@ -1,3 +1,7 @@
+.toppage-header {
+    display: flex;
+}
+
 .toppage-header-search {
     width: 563px;
         height: 80px;
@@ -71,76 +75,96 @@
 .profile-form__heading {
     font-family: Inter;
         font-size: 36px;
-        font-weight: 700;
-        line-height: 43.57px;
-        text-align: left;
+    
+        text-align: center;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
-        color:#000000;
+        color: #000000;
 }
+.profile-edit-form-image{
+    
+     display:flex;
 
+}
 .profile-image {
     width: 150px;
         height: 150px;
         top: 233px;
-        left: 416px;
+        
         gap: 0px;
         opacity: 0px;
+        border-radius: 50%;
         background: #D9D9D9;
+        margin:0 auto;
+        display: inline-block;
 }
 
 .profile-image-file {
     width: 179px;
         height: 49px;
         top: 284px;
-        left: 606px;
+        
         gap: 0px;
         border-radius: 10px 0px 0px 0px;
         opacity: 0px;
         border: 2px solid #FF5555;
         color:#FF5555;
+        margin: 0 auto;
+        display: inline-block;
 }
 
 .edit-form__error-message {
     color:#FF5555;
 }
 
+label {
+    display: inline-block;
+
+}
+
 .edit-form__label {
-    font-family: Inter;
+    width: 680px;
+        font-family: Inter;
         font-size: 24px;
         font-weight: 700;
         line-height: 29.05px;
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
-        color:#000000;
+        color: #000000;
+        display: block;
+        margin-inline: auto;
 }
 
+
 .edit-form__input {
-    width: 680px;
-        height: 55px;
-        top: 496px;
-        left: 416px;
+    border: 1px solid #5F5F5F;
+        width: 680px;
+        height: 57.09px;
+        top: 132.55px;
         gap: 0px;
         border-radius: 4px 0px 0px 0px;
         border: 1px 0px 0px 0px;
         opacity: 0px;
-        border: 1px solid #5F5F5F;
-}
+        display: block;
+        margin-inline: auto;
+    }
+
 
 .edit-form__btn {
     width: 680px;
-        height: 60px;
+        height: 65.25px;
+        top: 597px;
+        left: 417px;
         gap: 0px;
         border-radius: 5px 0px 0px 0px;
         opacity: 0px;
         background: #FF5555;
         font-family: Inter;
-            font-size: 26px;
-            font-weight: 700;
-            line-height: 31.47px;
-            text-align: center;
-            text-underline-position: from-font;
-            text-decoration-skip-ink: none;
-            color:#FFFFFF;
+        font-size: 26px;
+    
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #FFFFFF;
 }

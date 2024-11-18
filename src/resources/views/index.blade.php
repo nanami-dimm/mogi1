@@ -14,7 +14,7 @@
     </div>
     <div class="toppage-header-nav">
     @if (Auth::check())
-        <from action="/logout" method="post">
+        <form action="/logout" method="post">
         @csrf
             <button class="logout-button">ログアウト</button>
         </form>
