@@ -2,7 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/profile.css')}}">
-@endsection
+@endsection('css')
 
 @section('link')
 <div class="toppage-header">
@@ -14,7 +14,7 @@
     </div>
     <div class="toppage-header-nav">
 
-        <from action="/logout" method="post">
+        <form action="/logout" method="post">
         @csrf
             <input class="header_link" type="submit" value="ログアウト">
         </form>
@@ -24,19 +24,19 @@
         <a class="sell__link" href="/sell">出品</a>
     </div>
 </div>
-@endsection
+@endsection('link')
 
 @section('content')
     <div class="user-info">
-        @foreach ($profileimages as $profileimage )
+        @foreach ($profiles as $profile )
         <div class="user-image">
-            <img src="{{ asset($profileimage->profile_image) }}"  class="img-content">
+            <img src="{{ asset($profile->profile_image) }}"  class="img-content">
         </div>
-        @endforeach
+        
 
-        @foreach ($profiles as $profile)
+        
         <div class="user-name">
-            <p>{{ asset($profile->name) }}</p>
+            <p>{{ $profile->name }}</p>
         </div>
         <div class="profile_edit">
             <input class="edit-form__btn btn" type="submit" href="/mypage/edit"  value="プロフィールを編集">
@@ -49,13 +49,17 @@
                 <input class="buy-item" type="submit" value="購入した商品">
             </div>
         </div>
+        @endforeach
         <div class="product-data">
-            @foreach ($exhibitions as $exhibition )
+            @foreach ($exhibitions as $exhibition)
         <div class="product-sell-content">
-            <a href="/item/{{ $Exhibition->id}}" class="product-link"></a>
-            <img src="{{ asset($Exhibition ->product_image) }}" alt="商品画像" class="product-image">
+            <a href="/item/{{ $exhibition->id}}" class="product-link"></a>
+            <img src="{{ asset($exhibition ->product_image) }}" alt="商品画像" class="product-image">
             <div class="product-detail">
-                <p>{{ $Exhibition ->product_name}}</p>
+                <p>{{ $exhibition ->product_name}}</p>
             </div>
         </div>
         @endforeach
+        </div>
+    </div>
+    @endsection('content')

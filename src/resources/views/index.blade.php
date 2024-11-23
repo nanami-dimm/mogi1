@@ -20,7 +20,7 @@
             <button class="logout-button">ログアウト</button>
         </form>
       
-        <a class="mypage__link" href="/?tab=mypage">マイページ</a>
+        <a class="mypage__link" href="/mypage">マイページ</a>
     @endif
         <a class="sell__link" href="/sell">出品</a>
     

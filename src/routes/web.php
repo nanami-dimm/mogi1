@@ -26,5 +26,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/', [ItemController::class, 'index']);
 
     Route::get('/sell', [ItemController::class,'sell']);
+
+    Route::get('/mypage', [ProfileController::class,'index']);
+    
 });
 

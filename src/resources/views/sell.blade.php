@@ -14,7 +14,7 @@
     </div>
     <div class="toppage-header-nav">
 
-        <from action="/logout" method="post">
+        <form action="/logout" method="post">
         @csrf
             <input class="header_link" type="submit" value="ログアウト">
         </form>
