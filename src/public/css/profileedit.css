@@ -3,33 +3,46 @@
 }
 
 .toppage-header-search {
-    width: 563px;
-        height: 80px;
-        left: 475px;
-        gap: 0px;
-        opacity: 0px;
+    width: 330px;
+    height: 36.1px;
+
+    gap: 0px;
+    opacity: 0px;
+}
+
+.toppage-header-nav {
+    width: 463px;
+    height: 80px;
+    left: 1049px;
+    gap: 0px;
+    opacity: 0px;
 }
 
 .search-form {
-    width: 500px;
-        height: 50px;
-        top: 15px;
-        left: 31px;
-        gap: 0px;
-        border-radius: 5px 0px 0px 0px;
-        opacity: 0px;
-        background: #FFFFFF;
+    width: 330px;
+    height: 50px;
+    top: 15px;
+    left: 31px;
+    gap: 0px;
+    border-radius: 5px 0px 0px 0px;
+    opacity: 0px;
+    background: #FFFFFF;
 }
 
 .search-form__keyword-input {
     font-family: Inter;
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 29.05px;
-        text-align: center;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#000000;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+}
+
+.logout-form {
+    width: 150px;
+    text-align: center;
 }
 
 .logout-button {
@@ -43,35 +56,35 @@
 }
 
 .mypage__link {
+    width: 300px;
     font-family: Inter;
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 29.05px;
-        text-align: center;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#FFFFFF;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #FFFFFF;
 }
 
 .sell__link {
     width: 100px;
-        height: 50px;
-        top: 18px;
-        left: 337px;
-        gap: 0px;
-        border-radius: 4px 0px 0px 0px;
-        opacity: 0px;
-        background: #FFFFFF;
-        font-family: Inter;
-            font-size: 24px;
-            font-weight: 400;
-            line-height: 29.05px;
-            text-align: center;
-            text-underline-position: from-font;
-            text-decoration-skip-ink: none;
-            color:#000000;
+    height: 50px;
+    top: 18px;
+    left: 337px;
+    gap: 0px;
+    border-radius: 4px 0px 0px 0px;
+    opacity: 0px;
+    background: #FFFFFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
 }
-
 .profile-form__heading {
     font-family: Inter;
         font-size: 36px;

@@ -47,7 +47,7 @@
             <label class="exhibited-product-product-detail" for="detail">商品の詳細</label>
 
             <div class="exhibited-products-category-area">
-                <label class="product__label" for="product_category">カテゴリー</label>
+                <label class="product_label" for="product_category">カテゴリー</label>
                 @foreach($categories as $category)
                 <input  class="category__content" type="radio" name="product_category" id="product_category" value="{{ $category->product_category}}" >
                 @endforeach
@@ -57,15 +57,15 @@
           @enderror
                 </p>
             </div>
-
+            
             <div class="exhibited-product-status">
                 <label class="product_label" for="condition">商品の状態</label>
-                    <select class="condition-form__select" name="condition_id" id="">
+                
+                    <select class="condition-form__select" name="condition_id" id="condition" >
                     <option disabled selected>選択してください</option>
                     @foreach($conditions as $condition)
                     <option value="{{ $condition->id }}" {{ old('condition_id')==$condition->id ? 'selected' : '' }}>{{
-              $condition->condition }}
-                    </option>
+              $condition->condition }}</option>
                     @endforeach
                     </select>
                     <p class="sell-form__error-message">
@@ -113,4 +113,4 @@
         </div>
     </div>
 </div>
-                
+        @endsection('content')

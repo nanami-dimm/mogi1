@@ -14,26 +14,29 @@
     </div>
     <div class="toppage-header-nav">
     @if (Auth::check())
-        <form action="/logout" method="post">
+    
+        <form action="/logout" method="post" class="logout-form">
         @csrf
             <button class="logout-button">ログアウト</button>
         </form>
-
+      
         <a class="mypage__link" href="/?tab=mypage">マイページ</a>
     @endif
         <a class="sell__link" href="/sell">出品</a>
-    </div>
+    
 </div>
 @endsection
 
 @section('content')
     <div class="toppage-list">
+        <div class="list">
         <div class="best-list">
             <input class="best_list-btn" type="submit" value="おすすめ">
         </div>
         <div class="my-list">
             <input class="my-list_btn" type="submit" value="マイリスト">
         </div>
+        
     </div> 
     <div class="product-row">
         @foreach ($exhibitions as $exhibition )

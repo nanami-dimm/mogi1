@@ -4,17 +4,17 @@ body {
 }
 
 .header {
-    width: 1515px;
+    
         height: 82px;
         gap: 0px;
         opacity: 0px;
-       color:#000000;
+       background:#000000;
 }
 
 .header__heading {
-    width: 370px;
+    width:250px;
         height: 36.01px;
         gap: 0px;
         opacity: 0px;
-    background: #FFFFFF;
+    background-color: #000000;
 }

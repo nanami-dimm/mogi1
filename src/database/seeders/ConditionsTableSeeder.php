@@ -14,16 +14,24 @@ class ConditionsTableSeeder extends Seeder
      */
     public function run()
     {
-        $conditions = [
-            "良好",
-            "目立った傷や汚れなし",
-            "やや傷や汚れあり",
-            "状態が悪い",
-        ];
 
-        foreach ($conditions as $condition){
-            DB::table('productconditions')->insert(['condition' => $condition,
+
+            DB::table('productconditions')->insert([
+            [
+                'condition' => '良好',
+            ],
+            [
+                'condition' => '目立った傷や汚れなし',
+            ],
+            [
+                'condition' =>'やや傷や汚れあり',
+            ],    
+            [
+                'condition' => '状態が悪い',
+            ],
         ]);
+            
+        
         }
     }
-}
+

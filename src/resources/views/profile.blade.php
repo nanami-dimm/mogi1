@@ -41,4 +41,21 @@
         <div class="profile_edit">
             <input class="edit-form__btn btn" type="submit" href="/mypage/edit"  value="プロフィールを編集">
         </div>
-        
+        <div class="toppage-list">
+            <div class="toppage-list-sell">
+                <input class="sell-item" type="submit" value="出品した商品">
+            </div>
+            <div class="toppage-list-buy">
+                <input class="buy-item" type="submit" value="購入した商品">
+            </div>
+        </div>
+        <div class="product-data">
+            @foreach ($exhibitions as $exhibition )
+        <div class="product-sell-content">
+            <a href="/item/{{ $Exhibition->id}}" class="product-link"></a>
+            <img src="{{ asset($Exhibition ->product_image) }}" alt="商品画像" class="product-image">
+            <div class="product-detail">
+                <p>{{ $Exhibition ->product_name}}</p>
+            </div>
+        </div>
+        @endforeach
