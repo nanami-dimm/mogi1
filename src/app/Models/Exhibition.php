@@ -18,6 +18,6 @@ class Exhibition extends Model
 
     public function condition()
     {
-        return $this->belongsTo(Condition::class);
+        return $this->belongsToMany(Productcondition::class);
     }
 }

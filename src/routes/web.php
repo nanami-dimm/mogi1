@@ -19,6 +19,7 @@ use App\Http\Controllers\ProfileController;
 Route::middleware('auth')->group(function(){
 
     
+
     Route::get('/mypage/profile', [ProfileController::class,'edit']);
 
     Route::post('/', [ProfileController::class,'postedit']);
@@ -28,6 +29,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/sell', [ItemController::class,'sell']);
 
     Route::get('/mypage', [ProfileController::class,'index']);
+    
+    Route::get('/item/{item_id}',[ItemController::class,'detail']);
     
 });
 

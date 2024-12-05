@@ -1,3 +1,5 @@
+
+
 .toppage-header {
     display: flex;
 }
@@ -5,17 +7,17 @@
 .toppage-header-search {
     width: 330px;
     height: 36.1px;
-    
+
     gap: 0px;
     opacity: 0px;
 }
 
-.toppage-header-nav{
+.toppage-header-nav {
     width: 463px;
-        height: 80px;
-        left: 1049px;
-        gap: 0px;
-        opacity: 0px;
+    height: 80px;
+    left: 1049px;
+    gap: 0px;
+    opacity: 0px;
 }
 
 .search-form {
@@ -39,7 +41,8 @@
     text-decoration-skip-ink: none;
     color: #000000;
 }
-.logout-form{
+
+.logout-form {
     width: 150px;
     text-align: center;
 }
@@ -129,25 +132,25 @@ width: 1512px;
     color: #FF0000;
 }
 
+.product-content{
+    margin: 20px;
+        
+}
+
 .product-row {
-    width: 100%;
+    width: 770px;
         height: 0px;
         top: 47px;
         gap: 0px;
-        border: 2px 0px 0px 0px;
-        opacity: 0px;
-        
-        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
         border: 2px solid #5F5F5F;
 }
 
+
 .product-link {
-    width: 290px;
-        height: 281.27px;
-        gap: 0px;
-        border-radius: 4px 0px 0px 0px;
-        opacity: 0px;
-        background: #D9D9D9;
+    
+       display: block;
 }
 
 .product-image {

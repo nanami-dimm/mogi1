@@ -15,7 +15,7 @@ class CreateChangeaddressesTable extends Migration
     {
         Schema::create('changeaddresses', function (Blueprint $table) {
             $table->id();
-            $table->integer('newpost_code');
+            $table->string('newpost_code');
             $table->string('new_address');
             $table->string('new_building');
             

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Profile extends Model
 {
@@ -12,8 +14,17 @@ class Profile extends Model
         'id',
     ];
 
-    public function profileimage()
+    public function user()
      {
-        return $this->belongsTo(Profileimage::class);
+        return $this->hasone(User::class);
+    }
+
+   
+    protected static function boot()
+    {
+    parent::boot();
+    self::saving(function($profile) {
+        $profile->user_id = Auth::id();
+    });
     }
 }

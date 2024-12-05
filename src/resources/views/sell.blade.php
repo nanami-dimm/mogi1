@@ -49,7 +49,8 @@
             <div class="exhibited-products-category-area">
                 <label class="product_label" for="product_category">カテゴリー</label>
                 @foreach($categories as $category)
-                <input  class="category__content" type="radio" name="product_category" id="product_category" value="{{ $category->product_category}}" >
+                <input  class="category__content" type="checkbox" name="product_category" id="product_category" value="{{ $category->product_category}}" >
+                <label for="product_category">{{$category->product_category}}</label>
                 @endforeach
                 <p class="sell-form__error-message">
           @error('product_category')

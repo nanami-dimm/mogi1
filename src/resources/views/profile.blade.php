@@ -28,33 +28,32 @@
 
 @section('content')
     <div class="user-info">
-        @foreach ($profiles as $profile )
-        <div class="user-image">
-            <img src="{{ asset($profile->profile_image) }}"  class="img-content">
-        </div>
-        
-
-        
-        <div class="user-name">
-            <p>{{ $profile->name }}</p>
-        </div>
-        <div class="profile_edit">
-            <input class="edit-form__btn btn" type="submit" href="/mypage/edit"  value="プロフィールを編集">
+        <div class="user-profile">
+           
+            <div class="user-image">
+                <img src="{{ asset($users->profile_image) }}"  class="img-content">
+            </div>
+            <div class="user-name">
+                <p>{{ $users->name }}</p>
+            </div>
+            <div class="profile_edit">
+                <a class="edit-form__btn btn" href="mypage/profile">プロフィールを編集</a>
+            </div>
         </div>
         <div class="toppage-list">
             <div class="toppage-list-sell">
-                <input class="sell-item" type="submit" value="出品した商品">
+                <a class="sell-item" href="">出品した商品</a>
             </div>
             <div class="toppage-list-buy">
-                <input class="buy-item" type="submit" value="購入した商品">
+                <a class="buy-item" href="">購入した商品</a>
             </div>
         </div>
-        @endforeach
+       ->nullable()
         <div class="product-data">
             @foreach ($exhibitions as $exhibition)
         <div class="product-sell-content">
             <a href="/item/{{ $exhibition->id}}" class="product-link"></a>
-            <img src="{{ asset($exhibition ->product_image) }}" alt="商品画像" class="product-image">
+            <img src="{{ asset($exhibition ->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
             <div class="product-detail">
                 <p>{{ $exhibition ->product_name}}</p>
             </div>

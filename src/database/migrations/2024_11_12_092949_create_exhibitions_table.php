@@ -20,7 +20,7 @@ class CreateExhibitionsTable extends Migration
             $table->string('product_name');
             $table->text('product_description');
             $table->string('product_image');
-            $table->integer('product_price');
+            $table->string('product_price');
 
             $table->timestamps();
         });

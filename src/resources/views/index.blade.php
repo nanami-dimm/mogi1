@@ -41,10 +41,11 @@
     <div class="product-row">
         @foreach ($exhibitions as $exhibition )
         <div class="product-content">
-            <a href="/item/{{ $Exhibition->id}}" class="product-link"></a>
-            <img src="{{ asset($Exhibition ->product_image) }}" alt="商品画像" class="product-image">
+            <a href="/item/{{ $exhibition->id}}" class="product-link">
+            <img src="{{ asset($exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
+            </a>
             <div class="product-detail">
-                <p>{{ $Exhibition ->product_name}}</p>
+                <p>{{ $exhibition->product_name}}</p>
             </div>
         </div>
         @endforeach

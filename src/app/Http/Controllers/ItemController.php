@@ -28,4 +28,14 @@ class ItemController extends Controller
         return view('sell', compact('categories', 'conditions'));
     }
 
+    public function detail($exhibitions_id)
+    {
+        $exhibitions = Exhibition::find($exhibitions_id);
+       //dd($exhibitions);
+        $categories = Category::all();
+       //dd($categories);
+        $productconditions = Productcondition::all();
+        return view('detail',compact('exhibitions','categories', 'productconditions'));
+
+    }
 }

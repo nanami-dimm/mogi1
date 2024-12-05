@@ -3,34 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Profile;
+use App\Models\User;
 use App\Models\Exhibition;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProfileController extends Controller
 {
     public function index(){
-        $profiles = Profile::all();
+        $users = Auth::user();
         $exhibitions = Exhibition::all();
-        return view('profile',compact('profiles', 'exhibitions'));
+        return view('profile',compact('users', 'exhibitions'));
     }
 
     public function edit()
     {
-        return view('profileedit');
+        $id = Auth::id();
+      $users = User::find($id);
+        dd($users);
+        return view('profileedit',compact('users'));
     }
 
     public function postedit(Request $request)
     {   
-        Profile::create(
-            $request->only([
-                'profile_image',
-                'name',
-                'post_code',
-                'address',
-                'building',
-            ])
-            );
-        
+        $form = $request->all();
+        User::find($request->id)->update($form);
 
         return redirect('/');
     }
