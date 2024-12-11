@@ -8,16 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Exhibition extends Model
 {
     use HasFactory;
-    protected $guarded = [
-       'id',
+    protected $fillable = [
+      'productcondition_id',
+       'product_name',
+       'product_description',
+       'product_image',
+       'product_price',
     ];
     public function categories()
     {
         return $this->belongsToMany(Category::class,'exhibition_category','exhibition_id','category_id');
     }
 
-    public function condition()
+    public function conditions()
     {
-        return $this->belongsToMany(Productcondition::class);
+        return $this->belongsTo(Productcondition::class,'productcondition_id','foreign_key');
     }
 }

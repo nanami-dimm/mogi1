@@ -17,6 +17,7 @@ class CreateExhibitionsTable extends Migration
             $table->id();
             
             $table->foreignId('productcondition_id')->constrained()->cascadeOnDelete();
+            
             $table->string('product_name');
             $table->text('product_description');
             $table->string('product_image');

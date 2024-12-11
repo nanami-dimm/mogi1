@@ -24,8 +24,16 @@ class ItemController extends Controller
     public function sell()
     {
         $categories = Category::all();
-        $conditions = Productcondition::all();
-        return view('sell', compact('categories', 'conditions'));
+        $productconditions = Productcondition::all();
+        return view('sell', compact('categories', 'productconditions'));
+    }
+
+    public function create(Request $request)
+    {
+        $form = $request->all();
+       // dd($form);
+        Exhibition::create($form);
+        return redirect('/');
     }
 
     public function detail($exhibitions_id)

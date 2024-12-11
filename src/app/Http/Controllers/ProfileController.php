@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Exhibition;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 
 class ProfileController extends Controller
@@ -19,15 +21,17 @@ class ProfileController extends Controller
     public function edit()
     {
         $id = Auth::id();
-      $users = User::find($id);
-        dd($users);
+      $users = Auth::user($id);
+       //dd($users);
         return view('profileedit',compact('users'));
     }
 
     public function postedit(Request $request)
     {   
         $form = $request->all();
-        User::find($request->id)->update($form);
+        User::find($request->id);
+        User::create($form);
+        
 
         return redirect('/');
     }

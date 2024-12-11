@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/sell', [ItemController::class,'sell']);
 
+    Route::post('/',[ItemController::class,'create']);
+
     Route::get('/mypage', [ProfileController::class,'index']);
     
     Route::get('/item/{item_id}',[ItemController::class,'detail']);

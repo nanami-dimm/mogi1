@@ -30,7 +30,7 @@
 <div class="sell-form">
     <h2 class="sell-form__heading">商品の出品</h2>
 <div class="sell-form__inner">
-    <form action="/" method="get">
+    <form action="/" method="post">
         @csrf
         <div class="exhibites-products-image">
             <label class="product_label" for="product_image">商品画像
@@ -62,11 +62,11 @@
             <div class="exhibited-product-status">
                 <label class="product_label" for="condition">商品の状態</label>
                 
-                    <select class="condition-form__select" name="condition_id" id="condition" >
+                    <select class="condition-form__select" name="productcondition_id" id="condition" >
                     <option disabled selected>選択してください</option>
-                    @foreach($conditions as $condition)
-                    <option value="{{ $condition->id }}" {{ old('condition_id')==$condition->id ? 'selected' : '' }}>{{
-              $condition->condition }}</option>
+                    @foreach($productconditions as $productcondition)
+                    <option value="{{ $productcondition->id }}" {{ old('productcondition_id')==$productcondition->id ? 'selected' : '' }}>{{
+              $productcondition->condition }}</option>
                     @endforeach
                     </select>
                     <p class="sell-form__error-message">
@@ -111,6 +111,7 @@
             </div>
 
             <input class="sell-form_btn btn" type="submit" value="出品する">
+    </form>
         </div>
     </div>
 </div>

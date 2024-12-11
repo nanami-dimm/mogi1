@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Productcondition extends Model
 {
     use HasFactory;
-    protected $guarded = [
-        'id',
+    protected $fillable = [
+        'condition',
     ];
+    
     
 }
