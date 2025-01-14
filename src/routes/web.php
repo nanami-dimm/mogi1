@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::middleware('auth')->group(function(){
+
+    
+
+    Route::get('/mypage/profile', [ProfileController::class,'edit']);
+
+    Route::post('/', [ProfileController::class,'postedit']);
+
+    Route::get('/', [ItemController::class, 'index']);
+
+    Route::get('/sell', [ItemController::class,'sell']);
+
+    Route::post('/',[ItemController::class,'create']);
+
+    Route::get('/mypage', [ProfileController::class,'index']);
+    
+    Route::get('/item/{item_id}',[ItemController::class,'detail']);
+    
 });
+
