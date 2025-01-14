@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/index.css')}}">
+<link rel="stylesheet" href="{{ asset('css/detail.css')}}">
 @endsection
 
 @section('link')
@@ -31,7 +31,7 @@
 <div class="product-detail">
     <div class="product-image-area">
         <div class="product-image">
-            <img src="{{asset($exhibitions->product_image) }}" alt="商品画像" class="image">
+            <img src="{{asset($exhibitions->product_image) }}" alt="商品画像" class="image" height="300">
         </div>
     </div>
     <div class="product-description-area">
@@ -45,17 +45,22 @@
             </tr>
             <tr class="product-title-inner">
                 <td class="product-title-price">
-                    {{$exhibitions->product_price}}
+                    ￥{{$exhibitions->product_price}}
                 </td>
             </tr>
             <div class="product-actions">
-                    <img src="/storage/img/星アイコン8.svg">
-                    
+                <form action="/item/{item_id}/like" method="post">
+                    @csrf
+
+                    <input type="image" id="star" alt="like" src="/storage/img/星アイコン8.svg">
+                </form>
                     <img src="/storage/img/ふきだしのアイコン.svg"  >
             </div>
         </div>
         <div class="purchase-area">
-            <a class="purchase-box" href="">購入手続きへ</a>  
+            @foreach($exhibitions as $exhibition)
+            <a class="purchase-box" href="purchase/{{$exhibitions->id}}">購入手続きへ</a>  
+            @endforeach
         </div>
         <div class="product-description">
             <label class="product-label" for="description">
@@ -68,29 +73,58 @@
             <label class="product-label" for="information">
                 商品の情報</label>
                 <div class="category-info">
-                    <label class="information-inner" for="category">
+                    
+                    <label class="information-inner" for="category">カテゴリー</label>
+                        
                         <tr><td>
                             {{$categories->product_category}}
                         </td></tr>
+                        
                 </div>
                 <div class="category-condition">
-                    <label class="information-inner" for="condition">
+                    
+                    <label class="information-inner" for="condition">商品の状態</label>
                         <tr><td>
                             {{$productconditions->condition}}
                         </td></tr>
+                  
                 </div>
         </div>
         <div class="product-comments">
             <label class="product-comment">
-                コメント</label>
+                コメント()</label>
                 <div class="comments-list">
-                //コメントのところはまだできていない\\
+               
+                <div class="user-information">
+                    
+                <img src="{{ asset($users->profile_image) }}"  class="img-content">
+                   
+            
+                <p>{{$users->name}}</p>
                 </div>
+
+                <div class="comments">
+                    @foreach($comments as $comment)
+                    {{$comments->product_comment}}
+                    @endforeach
+                </div>
+                </div>
+                <form action="/item/{item_id}" method="post" >
+                    @csrf
                 <div class="comments-input">
                     <label class="product-comments" for="comments">商品へのコメント</label>
                     <input class="comments-input" id="comments" type="text">
-                    <button class="comments-button">コメントを送信する"</button>
+                    <p class="comment-form__error-message">
+                        @error('product_comment')
+                        {{ $message }}
+                        @enderror
+                    </p>
+                    <button class="comments-button">コメントを送信する</button>
+
+                    
                 </div>
+                </form>
         </div>
     </div>
 </div>
+@endsection

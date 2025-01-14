@@ -1,5 +1,3 @@
-
-
 .toppage-header {
     display: flex;
 }
@@ -66,7 +64,7 @@
     text-align: center;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-    color: #0000;
+    color: #FFFFFF;
 }
 
 .sell__link {
@@ -88,89 +86,73 @@
     color: #000000;
 }
 
-.toppage-list {
-width: 1512px;
-    height: 47px;
-    top: 127px;
-    gap: 0px;
-    opacity: 0px;
-    width: 1512px;
-       
+.change-address__group {
+    text-align:center;
+
 }
 
-
-
-.list {
-    display:flex;
-    padding:20px;
+label {
+    display:inline-block;
 }
-.best_list-btn {
-    width: 155px;
-        height: 40px;
-        
+
+.change-address__heading{
+font-family: Inter;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 43.57px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color:#000000;
+    
+}
+
+.change-address__label{
     font-family: Inter;
         font-size: 24px;
         font-weight: 700;
         line-height: 29.05px;
-        text-align: right;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#5F5F5F;
-}
-
-.my-list_btn {
-    width: 155px;
-        height: 40px;
-        
-    font-family: Inter;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 29.05px;
-    
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    color: #FF0000;
-}
-
-.product-content{
-    margin: 20px;
-        
-}
-
-.product-row {
-    width: 770px;
-        height: 0px;
-        top: 47px;
-        gap: 0px;
-        display: flex;
-        flex-wrap: wrap;
-        border: 2px solid #5F5F5F;
-}
-
-
-.product-link {
-    
-       display: block;
-}
-
-.product-image {
-    font-family: Inter;
-        font-size: 40px;
-        font-weight: 400;
-        line-height: 48.41px;
-        text-align: center;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#000000;
-}
-
-.product-detail {
-    font-family: Inter;
-        font-size: 25px;
-        font-weight: 400;
-        line-height: 30.26px;
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
         color:#000000;
+        display: block;
+        margin-inline: auto;
+}
+
+.change-address__input{
+    width: 680px;
+        height: 45px;
+        top: 311px;
+        left: 416px;
+        gap: 0px;
+        border-radius: 4px 0px 0px 0px;
+        border: 1px 0px 0px 0px;
+        opacity: 0px;
+        border: 1px solid #5F5F5F;
+       
+        margin-inline: auto;
+}
+
+.change-address__error-message {
+    color:#ff5555;
+}
+
+.change-address__btn {
+    width: 680px;
+        height: 60px;
+        top: 787px;
+        left: 416px;
+        gap: 0px;
+        border-radius: 5px 0px 0px 0px;
+        opacity: 0px;
+        background: #FF5555;
+        font-family: Inter;
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 31.47px;
+            text-align: center;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color:#fff;
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/sell.css')}}">
+<link rel="stylesheet" href="{{ asset('css/buy.css')}}">
 @endsection
 
 @section('link')
@@ -29,18 +29,20 @@
 @section('content')
 <div class="buy-form">
     <div class="product-information">
-        @foreach ($exhibitions as $exhibition )
+        <div class="product">
         <div class="product-image">
-         <img src="{{ asset($exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
+         <img src="{{ asset($exhibitions->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
         </div>
         <div class="product-detail">
-         <p>{{ $exhibition->product_name}}</p>
-         <p>{{$exhibition->product_price}}</p>
+         <p>{{$exhibitions->product_name}}</p>
+         <p>￥{{$exhibitions->product_price}}
+         </p>
         </div>  
+        </div>
         <div class="pay-method">
             <label class="pay" for="pay-method">
                 支払い方法</label>
-            <select class="pay-form__select" name="pay_id" id="pay-method" >
+            <select class="pay-form__select" name="paymethod_id" id="paymethod" >
                     <option disabled selected>選択してください</option>
                     @foreach ($paymethods as $paymethod)
                     <option value="{{ $paymethod->id }}" {{ old('paymethod_id')==$paymethod->id ? 'selected' : '' }}>{{
@@ -51,26 +53,32 @@
         <div class="delivery">
             <label class="delivery" for="delovery-address">
                 配送先</label>
-                <a class="change-address" href="/purchase/address/:item_id">変更する</a>
-            <select class="delivery-form" name="delivery" id="delivery-form">
-                @foreach ($users as $user)
-                <p>〒{{$user->post_code}}</p>
-                <p>{{$user->address}}{{$user->building}}</p>
-                @endforeach
-            </select>
+                <a class="change-address" href="/purchase/address/{{$exhibitions->id}}">変更する</a>
+            <label class="delivery-form" name="delivery" id="delivery-form">
+            
+                   <p>〒{{$users->post_code}}</p>
+                    <p>{{$users->address}}{{$users->building}}</p>
+                
+                    </label>
         </div>
-        <div class="confirm-serface">
+        <aside class="confirm-surface">
+            
             <label class="product-price" for="price">
                 商品代金</label>
                 <p>{{$exhibitions->product_price}}</p>
-        
+            
+            @foreach($paymethods as $paymethod)
             <label class="delivery-address" for="delivery">
                 支払い方法</label>
-                <p>{{$paymethods->name}}</p>
-        </div>
+                <p>{{$paymethod->name}}</p>
+                @endforeach
+        </aside>
+        <form action="/" method="post"> 
+            @csrf        
         <div class="action-bar">
             <input class="buy-form_btn btn" type="submit" value="購入する">
         </div>
+                    </form>
     </div>
 </div>
-@endsection('content')
+@endsection

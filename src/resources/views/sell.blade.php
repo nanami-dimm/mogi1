@@ -30,7 +30,7 @@
 <div class="sell-form">
     <h2 class="sell-form__heading">商品の出品</h2>
 <div class="sell-form__inner">
-    <form action="/" method="post">
+    <form action="/mypage" method="post" enctype="multipart/form-data">
         @csrf
         <div class="exhibites-products-image">
             <label class="product_label" for="product_image">商品画像
@@ -47,10 +47,13 @@
             <label class="exhibited-product-product-detail" for="detail">商品の詳細</label>
 
             <div class="exhibited-products-category-area">
-                <label class="product_label" for="product_category">カテゴリー</label>
+                <label class="product_label" >カテゴリー</label>
                 @foreach($categories as $category)
-                <input  class="category__content" type="checkbox" name="product_category" id="product_category" value="{{ $category->product_category}}" >
-                <label for="product_category">{{$category->product_category}}</label>
+                
+                <label class="category">
+                    <input  class="category__content" type="checkbox" name="product_category" id="products_category" value="{{ $category->id}}" >
+                <span>{{$category->product_category}}</span></label>
+                
                 @endforeach
                 <p class="sell-form__error-message">
           @error('product_category')

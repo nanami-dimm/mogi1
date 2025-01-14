@@ -14,6 +14,6 @@ class Category extends Model
 
     public function exhibitions()
     {
-        return $this->belongsToMany(Exhibition::class);
+        return $this->belongsToMany(Exhibition::class)->withPivot('is_active');
     }
 }

@@ -1,0 +1,224 @@
+.toppage-header {
+    display: flex;
+}
+
+.toppage-header-search {
+    width: 330px;
+    height: 36.1px;
+
+    gap: 0px;
+    opacity: 0px;
+}
+
+.toppage-header-nav {
+    width: 463px;
+    height: 80px;
+    left: 1049px;
+    gap: 0px;
+    opacity: 0px;
+}
+
+.search-form {
+    width: 330px;
+    height: 50px;
+    top: 15px;
+    left: 31px;
+    gap: 0px;
+    border-radius: 5px 0px 0px 0px;
+    opacity: 0px;
+    background: #FFFFFF;
+}
+
+.search-form__keyword-input {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+}
+
+.logout-form {
+    width: 150px;
+    text-align: center;
+}
+
+.logout-button {
+    font-family: Inter;
+    font-size: 24px;
+
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+}
+
+.mypage__link {
+    width: 300px;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #FFFFFF;
+}
+
+.sell__link {
+    width: 100px;
+    height: 50px;
+    top: 18px;
+    left: 337px;
+    gap: 0px;
+    border-radius: 4px 0px 0px 0px;
+    opacity: 0px;
+    background: #FFFFFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+}
+
+.product{
+    display:flex;
+}
+.product-image {
+    width: 177.53px;
+        height: 177.53px;
+        top: 173px;
+        left: 80px;
+        gap: 0px;
+        opacity: 0px;
+        color:#D9D9D9;
+}
+
+
+.product-detail {
+    border-bottom: 1px solid #000000;
+    font-family: Inter;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 36.31px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+}
+
+.pay-method {
+    border-bottom: 1px solid #000000;
+    width:320px;
+}
+
+.pay {
+    font-family: Inter;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24.2px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+}
+
+.pay-form__select {
+    border: 1px solid #5F5F5F;
+    color:#5f5f5f;
+}
+
+.delivery {
+    border-bottom: 1px solid #000000;
+    font-family: Inter;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24.2px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+        width:320px;
+        
+}
+
+.change-address {
+    font-family: Inter;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24.2px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#0073CC;
+}
+
+.delivery-form {
+    font-family: Inter;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24.2px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+
+}
+.confirm-surface {
+width: 440px;
+    height: 230px;
+    top: 173px;
+    left: 987px;
+    gap: 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    border: Mixed solid #000000;
+}
+
+.product-price {
+    font-family: Inter;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24.2px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+}
+
+.delivery-address {
+    font-family: Inter;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24.2px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000;
+}
+
+.action-bar{
+    width: 440px;
+        height: 60px;
+        gap: 0px;
+        border-radius: 5px 0px 0px 0px;
+        opacity: 0px;
+     
+}
+.buy-form_btn{
+    font-family: Inter;
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 31.47px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#FFFFFF;
+        background: #FF5555;
+        
+}
