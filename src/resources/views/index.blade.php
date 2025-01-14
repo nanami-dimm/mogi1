@@ -9,7 +9,8 @@
     <div class="toppage-header-search">
         <form class="search-form" action="/search" method="get">
             @csrf
-            <input class="search-form__keyword-input" type="text" name="keyword" placeholder="何をお探しですか？">
+            <input class="search-form__keyword-input" type="text" name="keyword" placeholder="何をお探しですか？" value="{{ $keyword ?? '' }}">
+           
         </form>
     </div>
     <div class="toppage-header-nav">

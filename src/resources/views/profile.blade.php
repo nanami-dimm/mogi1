@@ -33,7 +33,7 @@
             <div class="user-image">
                 <img src="{{ asset($users->profile_image) }}"  class="img-content">
             </div>
-            <div class="user-name">
+          <div class="user-name">
                 <p>{{ $users->name }}</p>
             </div>
             <div class="profile_edit">

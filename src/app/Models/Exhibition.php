@@ -17,11 +17,17 @@ class Exhibition extends Model
     ];
     public function categories()
     {
-        return $this->belongsToMany(Category::class,'exhibition_category','exhibition_id','category_id');
+        return $this->belongsToMany(Category::class,'exhibition_category','exhibition_id','category_id')
+        ->withPivot('product_category');
     }
 
     public function conditions()
     {
         return $this->belongsTo(Productcondition::class,'productcondition_id','foreign_key');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }
