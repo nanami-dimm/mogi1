@@ -38,6 +38,7 @@ DB_PASSWORD=laravel_pass
 
 ##ER図
 mogi1.drawio.pngに記載
+
 ##URL
 -開発環境
 -商品一覧画面(トップ画面): http://localhost/
