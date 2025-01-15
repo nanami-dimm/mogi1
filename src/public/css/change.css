@@ -156,3 +156,36 @@ font-family: Inter;
             text-decoration-skip-ink: none;
             color:#fff;
 }
+
+@media (max-width: 1024px) {
+    .change-address-form {
+        width: 80%;
+        /* 幅を80%に調整 */
+        padding: 25px;
+        /* パディングを調整 */
+    }
+
+    .change-address__heading {
+        font-size: 1.6rem;
+        /* 見出しのフォントサイズを少し小さく */
+    }
+
+    .change-address__label {
+        font-size: 1rem;
+        /* ラベルのフォントサイズを少し小さく */
+    }
+
+    .change-address__input {
+        padding: 10px;
+        /* 入力フィールドのパディングを調整 */
+        font-size: 1rem;
+        /* フォントサイズを調整 */
+    }
+
+    .change-address__btn {
+        padding: 10px;
+        /* ボタンのパディングを調整 */
+        font-size: 1.1rem;
+        /* フォントサイズを調整 */
+    }
+}

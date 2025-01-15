@@ -221,3 +221,55 @@
         text-decoration-skip-ink: none;
         
 }
+
+@media (max-width: 1024px) {
+    .user-info {
+        padding: 20px;
+    }
+
+    .user-profile {
+        margin-bottom: 15px;
+    }
+
+    .user-image img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .user-name p {
+        font-size: 1.3rem;
+    }
+
+    .toppage-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .toppage-list-sell,
+    .toppage-list-buy {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .product-data {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-sell-content {
+        margin-bottom: 20px;
+    }
+
+    .product-image {
+        max-width: 180px;
+        height: 180px;
+    }
+
+    .product-detail p {
+        font-size: 0.9rem;
+    }
+
+    .profile_edit .edit-form__btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}

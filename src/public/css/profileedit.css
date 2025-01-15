@@ -181,3 +181,42 @@ label {
         text-decoration-skip-ink: none;
         color: #FFFFFF;
 }
+
+@media (max-width: 1024px) {
+    .profile-edit-form {
+        padding: 15px;
+    }
+
+    .profile-form__heading {
+        font-size: 1.8rem;
+    }
+
+    .profile-edit-form__inner {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .profile-edit-form-image {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-image img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .edit-form__input {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .edit-form__btn {
+        font-size: 1.1rem;
+        padding: 10px;
+    }
+
+    .edit-form__label {
+        font-size: 1rem;
+    }
+}
