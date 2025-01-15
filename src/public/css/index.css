@@ -174,3 +174,11 @@ width: 1512px;
         text-decoration-skip-ink: none;
         color:#000000;
 }
+
+@media (max-width: 1024px) {
+    .product-content {
+        width: 45%;
+       
+    }
+}
+    

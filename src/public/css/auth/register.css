@@ -90,3 +90,35 @@ width: 680px;
 .register-form__error-message {
     color: #FF9494;
 }
+
+@media (max-width: 1024px) {
+    .register-form {
+        width: 80%;
+        max-width: 500px;
+        padding: 25px;
+    }
+
+    .register-form__heading {
+        font-size: 1.3rem;
+    }
+
+    .register-form__label {
+        font-size: 0.95rem;
+        
+    }
+
+    .register-form__input {
+        padding: 12px;
+        
+    }
+
+    .register-form__btn {
+        padding: 14px;
+        
+    }
+
+    .login__link {
+        font-size: 0.95rem;
+       
+    }
+}

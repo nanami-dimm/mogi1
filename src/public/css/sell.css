@@ -310,3 +310,53 @@ input[type="checkbox"]:checked + span {
     font-size: 25px;
     margin:0px;
 }
+
+@media (max-width: 1024px) {
+    .sell-form {
+        padding: 15px;
+    }
+
+    .sell-form__heading {
+        font-size: 1.8rem;
+    }
+
+    .sell-form__inner {
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .exhibites-products-image {
+        margin-bottom: 15px;
+    }
+
+    .exhibited-products-image__frame {
+        max-width: 250px;
+    }
+
+    .exhibited-products-image__btn {
+        padding: 8px;
+        font-size: 1rem;
+    }
+
+    .product_label {
+        font-size: 1.1rem;
+    }
+
+    .category,
+    .condition-form__select,
+    .product-name__input,
+    .product-description__input,
+    .product-price__input {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .sell-form_btn {
+        font-size: 1.1rem;
+        padding: 10px;
+    }
+
+    .sell-form__error-message {
+        font-size: 0.8rem;
+    }
+}
