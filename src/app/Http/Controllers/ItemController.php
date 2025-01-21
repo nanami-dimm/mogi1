@@ -100,7 +100,7 @@ class ItemController extends Controller
 
     public function postbuy(Request $request){
         $form = $request->all();
-        Buyproduct::create($form);
+        
         return redirect('/');
     }
 
