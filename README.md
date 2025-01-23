@@ -10,7 +10,7 @@
 1. phpコンテナへアクセス
    'docker-compose exec php bash'
 2. 'composer install'
-3. .envに以下の環境変数を追加
+3. .env.exampleに以下の環境変数を追加
   ``` text
 DB_CONNECTION=mysql
 DB_HOST=mysql
