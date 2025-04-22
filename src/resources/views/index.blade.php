@@ -32,18 +32,18 @@
     <div class="toppage-list">
         <div class="list">
         <div class="best-list">
-            <input class="best_list-btn" type="submit" value="おすすめ">
-        </div>
-        <div class="my-list">
-            <input class="my-list_btn" type="submit" value="マイリスト">
-        </div>
+    <a href="/" class="best_list-btn">おすすめ</a>
+</div>
+<div class="my-list">
+    <a href="/" class="my-list_btn">マイリスト</a>
+</div>
         
     </div> 
     <div class="product-row">
-        @foreach ($exhibitions as $exhibition )
+        @foreach($exhibitions as $exhibition)
         <div class="product-content">
             <a href="/item/{{ $exhibition->id}}" class="product-link">
-            <img src="{{ asset($exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
+            <img src="{{ asset('storage/' . $exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
             </a>
             <div class="product-detail">
                 <p>{{ $exhibition->product_name}}</p>
@@ -51,4 +51,4 @@
         </div>
         @endforeach
     </div>
-    @endsection('content')
+    @endsection

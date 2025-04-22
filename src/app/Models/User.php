@@ -49,4 +49,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Like::class);
     }
+    public function exhibitions()
+    {
+        return $this->hasMany(Exhibition::class);
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

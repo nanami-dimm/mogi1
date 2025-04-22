@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 
 
 /*
@@ -47,5 +48,18 @@ Route::middleware('auth')->group(function(){
     Route::post('/item/{item_id}',[ItemController::class,'comment']);
 
     Route::post('/',[ItemController::class,'postbuy']);
+
+    Route::get('/transactions/{transactionId}',[TransactionController::class,'index']);
+
+    Route::get('item/{transactionId}/message', [TransactionController::class, 'message']);
+
+    Route::post('item/{transactionId}/message',[TransactionController::class,'send']);
+
+    Route::post('/transaction/{id}/complete', [TransactionController::class, 'complete'])->name('transaction.complete');
+
+    Route::post('/messages/save-draft', function (\Illuminate\Http\Request $request) {
+    session()->put('form_input.content', $request->input('content'));
+    return response()->json(['status' => 'saved']);
+});
 });
 

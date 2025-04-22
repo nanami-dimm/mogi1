@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExhibitionsTable extends Migration
+class CreateTransactionMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,15 @@ class CreateExhibitionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('exhibitions', function (Blueprint $table) {
+        Schema::create('transaction_messages', function (Blueprint $table) {
             $table->id();
-            $table->string('status')->default('sell');
-            $table->foreignId('productcondition_id')->constrained()->cascadeOnDelete();
-
+             $table->foreignId('transaction_id')->constrained()->onDelete('cascade');
              $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
-             
-            $table->string('product_name');
-            $table->text('product_description');
-            $table->string('product_image');
-            $table->string('product_price');
+             $table->text('content');
+             $table->string('image')->nullable();
+             $table->boolean('is_read')->default(false);
 
             $table->timestamps();
-
-            
         });
     }
 
@@ -38,6 +32,6 @@ class CreateExhibitionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exhibitions');
+        Schema::dropIfExists('transaction_messages');
     }
 }

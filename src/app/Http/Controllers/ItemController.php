@@ -8,11 +8,12 @@ use App\Models\Exhibition;
 use App\Models\Category;
 use App\Models\Productcondition;
 use App\Models\ExhibitionCategory;
-use App\Models\Paymethod;
+use App\Models\Purchase;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\Changeaddress;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class ItemController extends Controller
@@ -20,7 +21,7 @@ class ItemController extends Controller
     public function index()
     {
         $exhibitions = Exhibition::all();
-
+        //dd('$exhibitions');
         return view('index',compact('exhibitions'));
     }
 
@@ -56,12 +57,13 @@ class ItemController extends Controller
        
        $categories = Category::find($exhibitions_id);
         
-        $productconditions = Productcondition::find($exhibitions_id);
+       $condition = Exhibition::with('productCondition')->findOrFail($exhibitions_id);
+        //$productconditions = Productcondition::find($exhibitions_id);
         
         $users = User::latest()->first();
 
         $comments = Comment::all();
-        return view('detail',compact('exhibitions','categories', 'productconditions','users','comments'));
+        return view('detail',compact('exhibitions','categories', 'condition','users','comments'));
 
     }
 
@@ -70,11 +72,11 @@ class ItemController extends Controller
        //$exhibitions = Exhibition::all();
        $exhibitions = Exhibition::find($exhibitions_id);
         //dd($exhibitions);
-       $paymethods = Paymethod::all();
-       $users = User::latest()->first();
+       
+       $users = Auth::user();
        //dd($users);
        $newaddress = Changeaddress::latest()->first();
-        return view('buy',compact('exhibitions','paymethods','users','newaddress'));
+        return view('buy',compact('exhibitions','users','newaddress'));
     }
 
     public function search(Request $request){
@@ -99,8 +101,10 @@ class ItemController extends Controller
     }
 
     public function postbuy(Request $request){
+
         $form = $request->all();
-        
+        $purchase = Purchase::create($form);
+
         return redirect('/');
     }
 

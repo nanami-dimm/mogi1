@@ -9,11 +9,14 @@ class Exhibition extends Model
 {
     use HasFactory;
     protected $fillable = [
-      'productcondition_id',
-       'product_name',
-       'product_description',
-       'product_image',
-       'product_price',
+        'status',
+        'productcondition_id',
+        'user_id',
+        'productcondition_id',
+        'product_name',
+        'product_description',
+        'product_image',
+        'product_price',
     ];
     public function categories()
     {
@@ -21,13 +24,21 @@ class Exhibition extends Model
         ->withPivot('product_category');
     }
 
-    public function conditions()
+    public function productCondition()
     {
-        return $this->belongsTo(Productcondition::class,'productcondition_id','foreign_key');
+    return $this->belongsTo(Productcondition::class, 'productcondition_id');
     }
 
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function transactions()
+    {
+        return $this->belongsTo(Transaction::class);
     }
 }

@@ -28,6 +28,8 @@
 
 @section('content')
 <div class="buy-form">
+    <form action="/" method="post" class="buy"> 
+            @csrf       
     <div class="product-information">
         <div class="product">
         <div class="product-image">
@@ -37,44 +39,47 @@
          <p>{{$exhibitions->product_name}}</p>
          <p>￥{{$exhibitions->product_price}}
          </p>
+         <input type="hidden" name="product_name" value="{{ $exhibitions->product_name }}">
+        <input type="hidden" name="price" value="{{ $exhibitions->product_price }}">
         </div>  
         </div>
         <div class="pay-method">
             <label class="pay" for="pay-method">
                 支払い方法</label>
             <select class="pay-form__select" name="paymethod_id" id="paymethod" >
-                    <option disabled selected>選択してください</option>
-                    @foreach ($paymethods as $paymethod)
-                    <option value="{{ $paymethod->id }}" {{ old('paymethod_id')==$paymethod->id ? 'selected' : '' }}>{{
-              $paymethod->name }}</option>     
-                    @endforeach
+                    <option value="konbini">コンビニ払い</option>
+                        <option value="card">クレジットカード払い</option>  
+                   
                     </select>
         </div>
         <div class="delivery">
             <label class="delivery" for="delovery-address">
                 配送先</label>
                 <a class="change-address" href="/purchase/address/{{$exhibitions->id}}">変更する</a>
-            <label class="delivery-form" name="delivery" id="delivery-form">
+            <div class="delivery-form" name="delivery" id="delivery-form">
             
-                   <p>〒{{$users->post_code}}</p>
-                    <p>{{$users->address}}{{$users->building}}</p>
-                
-                    </label>
+                <p>〒{{$users->post_code}}</p>
+                <p>{{$users->address}}{{$users->building}}</p>
+                <input type="hidden" name="postcode" value="{{ $users->post_code }}">
+                <input type="hidden" name="address" value="{{ $users->address }}">
+                <input type="hidden" name="building" value="{{ $users->building }}">
+            </div>
         </div>
-        <aside class="confirm-surface">
-            
-            <label class="product-price" for="price">
-                商品代金</label>
-                <p>{{$exhibitions->product_price}}</p>
-            
-            @foreach($paymethods as $paymethod)
-            <label class="delivery-address" for="delivery">
-                支払い方法</label>
-                <p>{{$paymethod->name}}</p>
-                @endforeach
-        </aside>
-        <form action="/" method="post"> 
-            @csrf        
+        <div class="confirm-surface">
+            <table>
+                <tr>
+                    <th class="product-price" for="price">
+                商品代金</th>
+                <td class="table_data" >￥{{ $exhibitions->product_price }}</td>
+                </tr>
+                <tr>
+                    <th class="delivery-address" for="delivery">
+                支払い方法</th>
+                <td class="table_data">コンビニ支払い</td>
+                </tr>
+            </table>
+        </div>
+         
         <div class="action-bar">
             <input class="buy-form_btn btn" type="submit" value="購入する">
         </div>

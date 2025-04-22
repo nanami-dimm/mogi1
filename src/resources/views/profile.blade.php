@@ -41,24 +41,64 @@
             </div>
         </div>
         <div class="toppage-list">
-            <div class="toppage-list-sell">
-                <a class="sell-item" href="">出品した商品</a>
-            </div>
-            <div class="toppage-list-buy">
-                <a class="buy-item" href="">購入した商品</a>
-            </div>
+            <ul class="toppage-list">
+                
+                <li><a href="{{ url()->current() }}?status=sell">出品した商品</a></li>
+            
+            
+                <li><a href="{{ url()->current() }}?status=buy">購入した商品</a></li>
+
+                <li><a href="{{ url()->current() }}?status=trading">取引中の商品</a></li>
+            </ul>
         </div>
-       ->nullable()
         <div class="product-data">
-            @foreach ($exhibitions as $exhibition)
-        <div class="product-sell-content">
-            <a href="/item/{{ $exhibition->id}}" class="product-link"></a>
-            <img src="{{ asset($exhibition ->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
-            <div class="product-detail">
-                <p>{{ $exhibition ->product_name}}</p>
+
+    {{-- 出品商品 --}}
+    @if ($status !== 'buy')
+        @foreach ($exhibitions as $exhibition)
+            <div class="product-sell-content">
+                <a href="/item/{{ $exhibition->id }}" class="product-link">
+                    <img src="{{ asset('storage/' . $exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
+                </a>
+                <div class="product-detail">
+                    <p>{{ $exhibition->product_name }}</p>
+                </div>
             </div>
-        </div>
         @endforeach
+    @endif
+
+    {{-- 購入商品 --}}
+    @if ($status === 'buy')
+        @foreach ($purchases as $purchase)
+            @if ($purchase->exhibition)
+                <div class="product-sell-content">
+                    <a href="/item/{{ $purchase->exhibition->id }}" class="product-link">
+                        <img src="{{ asset('storage/' . $purchase->exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
+                    </a>
+                    <div class="product-detail">
+                        <p>{{ $purchase->exhibition->product_name }}</p>
+                    </div>
+                </div>
+            @endif
+        @endforeach
+    @endif
+    @if ($status === 'trading')
+    @foreach ($transactions as $transaction)
+        @if ($transaction->exhibition)
+            <div class="product-sell-content">
+                <a href="/item/{{ $transaction->id }}/message" class="product-link">
+                    <img src="{{ asset('storage/' . $transaction->exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
+                </a>
+                <div class="product-detail">
+                    <p>{{ $transaction->exhibition->product_name }}</p>
+                </div>
+            </div>
+        @endif
+    @endforeach
+@endif
+
+
+
         </div>
     </div>
-    @endsection('content')
+    @endsection

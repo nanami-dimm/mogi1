@@ -81,11 +81,12 @@
                         </td></tr>
                         
                 </div>
+                
                 <div class="category-condition">
                     
                     <label class="information-inner" for="condition">商品の状態</label>
                         <tr><td>
-                            {{$productconditions->condition}}
+                            {{ optional($condition->productCondition)->condition }}
                         </td></tr>
                   
                 </div>
