@@ -9,7 +9,7 @@ class Transaction extends Model
 {
     use HasFactory;
     protected $fillable= [
-        'exhibition_id','buyer_id','seller_id','status'
+        'exhibition_id','buyer_id','seller_id','status','created_at','updated_at'
     ];
 
     public function exhibition()

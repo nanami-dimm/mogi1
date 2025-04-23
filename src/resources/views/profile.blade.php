@@ -36,6 +36,18 @@
           <div class="user-name">
                 <p>{{ $users->name }}</p>
             </div>
+            @if (!is_null($users->average_rating))
+            <p>
+            評価:
+                @for ($i = 1; $i <= 5; $i++)
+                @if ($i <= $users->average_rating)
+                ⭐
+                @else
+                ☆
+                @endif
+            @endfor
+            </p>
+            @endif
             <div class="profile_edit">
                 <a class="edit-form__btn btn" href="mypage/profile">プロフィールを編集</a>
             </div>
@@ -48,7 +60,11 @@
             
                 <li><a href="{{ url()->current() }}?status=buy">購入した商品</a></li>
 
-                <li><a href="{{ url()->current() }}?status=trading">取引中の商品</a></li>
+                <li><a href="{{ url()->current() }}?status=trading">取引中の商品
+                    @if ($unreadMessagesCount > 0)
+  <span class="notification-badge">{{ $unreadMessagesCount }}</span>
+@endif
+                </a></li>
             </ul>
         </div>
         <div class="product-data">
@@ -88,7 +104,17 @@
             <div class="product-sell-content">
                 <a href="/item/{{ $transaction->id }}/message" class="product-link">
                     <img src="{{ asset('storage/' . $transaction->exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
-                </a>
+                     @php
+                                    $unreadMessages = $transaction->exhibition->transactionMessages->where('is_read', false);
+                                    $unreadCount = $unreadMessages->count();
+                                @endphp
+
+                                @if ($unreadCount > 0)
+                                    <div class="notification-badge">
+                                        {{ $unreadCount }}
+                                    </div>
+                                @endif
+                            </a>
                 <div class="product-detail">
                     <p>{{ $transaction->exhibition->product_name }}</p>
                 </div>

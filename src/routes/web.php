@@ -60,6 +60,14 @@ Route::middleware('auth')->group(function(){
     Route::post('/messages/save-draft', function (\Illuminate\Http\Request $request) {
     session()->put('form_input.content', $request->input('content'));
     return response()->json(['status' => 'saved']);
-});
+    });
+    
+    Route::post('/messages/{id}/edit', [TransactionController::class, 'edit']);
+
+    Route::delete('/messages/{id}', [TransactionController::class, 'destroy']);
+
+   
+
+
 });
 

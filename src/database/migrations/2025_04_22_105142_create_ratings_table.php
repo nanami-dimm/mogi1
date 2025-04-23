@@ -18,6 +18,7 @@ class CreateRatingsTable extends Migration
             $table->foreignId('transaction_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->tinyInteger('rating');
+            $table->foreignId('target_user_id'); 
             $table->timestamps();
         });
     }

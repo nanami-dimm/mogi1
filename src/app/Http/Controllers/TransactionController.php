@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\TransactionMessage;
 use App\Models\Transaction;
 use App\Events\MessageSent;
+use App\Mail\PurchaseCompletedMail;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class TransactionController extends Controller
@@ -19,20 +22,27 @@ class TransactionController extends Controller
     public function message(Request $request, $transactionId)
     {   
         $user = auth()->user();
-        $status = $request->query('status');
-        if ($status === 'trading') {
-        $transactions = Transaction::where('status', 'trading')
-        ->where(function ($q) use ($users) {
-            $q->where('buyer_id', $users->id)
-              ->orWhere('seller_id', $users->id); 
-        })
-        ->with('exhibition') 
-        ->get();
-        } else {
-            $transactions = collect();  
+        $status = $request->query('status','trading');
+        if ($request->has('content')) {
+        session(['content' => $request->input('content')]);
         }
-
         
+        if ($status === 'trading') {
+        // 特定の取引IDに基づいて取引を取得
+        $transactions = Transaction::where('id', $transactionId) // 取引IDで絞り込む
+            ->where(function ($q) use ($user) {
+                $q->where('buyer_id', $user->id)
+                  ->orWhere('seller_id', $user->id);
+            })
+            ->with('exhibition')  // exhibition情報も取得
+            ->get();
+    } else {
+        $transactions = collect();  // `trading` 以外のステータスの場合は空のコレクション
+    }
+
+       
+        //dd($transactions);
+
 
         $transaction = Transaction::with(['exhibition']) 
         ->findOrFail($transactionId);
@@ -42,14 +52,23 @@ class TransactionController extends Controller
         ->orderBy('created_at', 'asc')
         ->get();
 
-    // 未読メッセージを既読に変更（相手から来た分のみ）
+         $otherTransactions = Transaction::where('status', 'trading')
+        ->where(function ($q) use ($user) {
+            $q->where('buyer_id', $user->id)
+              ->orWhere('seller_id', $user->id);
+        })
+        ->where('id', '!=', $transactionId) // 現在の取引を除外
+        ->with('exhibition')
+        ->get();
+    
+        $savedMessage = session('content', '');
+
         TransactionMessage::where('transaction_id', $transactionId)
-        ->where('user_id', '!=', $user->id)
-        ->where('is_read', false)
-        ->update(['is_read' => true]);
-
-
-        return view('message',compact('transactions','transaction','status','messages'));
+    ->where('user_id', '!=', $user->id)
+    ->where('is_read', false)
+    ->update(['is_read' => true]);
+    
+        return view('message',compact('transactions','transaction','status','messages','otherTransactions','savedMessage'));
     }
 
    
@@ -87,16 +106,48 @@ class TransactionController extends Controller
         abort(403);
     }
 
-    // 取引ステータスを完了にする
-    $transaction->status = 'completed';
-    $transaction->save();
+    $myId = auth()->id();
+    $targetId = $myId === $transaction->buyer_id
+        ? $transaction->seller_id
+        : $transaction->buyer_id;
 
-    // 評価を保存する（既に評価があるか確認してから）
-    $transaction->rating()->create([
-        'user_id' => auth()->id(),
-        'rating' => $request->input('rating'),
-       
-    ]);
+    // ✅ 出品者の場合、購入者が評価済みでなければ完了させない
+    if ($myId === $transaction->seller_id) {
+        $buyerRated = $transaction->rating()
+            ->where('user_id', $transaction->buyer_id)
+            ->exists();
+
+        if (!$buyerRated) {
+            return back()->with('error', '購入者の評価が完了するまで取引を完了できません。');
+        }
+    }
+
+    // ✅ すでに評価済みか確認
+    $alreadyRated = $transaction->rating()
+        ->where('user_id', $myId)
+        ->where('target_user_id', $targetId)
+        ->exists();
+
+    if (!$alreadyRated) {
+        $transaction->rating()->create([
+            'user_id' => $myId,
+            'target_user_id' => $targetId,
+            'rating' => $request->input('rating'),
+        ]);
+    }
+
+    // ✅ 両者評価済みなら取引完了にする
+    $ratingCount = $transaction->rating()->count();
+    if ($ratingCount >= 2) {
+        $transaction->status = 'completed';
+        $transaction->save();
+    }
+    $exhibition = $transaction->exhibition;
+    //dd($exhibition);
+    $buyer = auth()->user();
+    $seller = $exhibition->user;
+
+    Mail::to($seller->email)->send(new PurchaseCompletedMail($exhibition, $buyer));
 
     return redirect('/');
 }
@@ -112,6 +163,33 @@ class TransactionController extends Controller
     return response()->json(['status' => 'success']);
 }
 
-    
+    public function edit(Request $request, $id)
+{
+    $message = TransactionMessage::findOrFail($id);
+
+    // 自分のメッセージのみ編集できるように
+    if ($message->user_id !== auth()->id()) {
+        return response()->json(['status' => 'unauthorized'], 403);
+    }
+
+    $message->content = $request->input('content');
+    $message->save();
+
+    return response()->json(['status' => 'success']);
 }
 
+// 削除
+public function destroy($id)
+{
+    $message = TransactionMessage::findOrFail($id);
+
+    // 自分のメッセージのみ削除できるように
+    if ($message->user_id !== auth()->id()) {
+        return response()->json(['status' => 'unauthorized'], 403);
+    }
+
+    $message->delete();
+
+    return response()->json(['status' => 'deleted']);
+}
+}

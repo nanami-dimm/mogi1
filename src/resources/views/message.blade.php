@@ -8,20 +8,25 @@
 @section('content')
 <div class="message">
     <div class="other-transection">
-        <label class="other">その他の取引</label>
-        @if ($status === 'trading')
-            @foreach ($transactions as $transaction)
-                @if ($transaction->item)
+        <div class="sidebar">
+    <h3>その他の取引</h3>
+    <ul>
+        @foreach ($otherTransactions as $otherTransaction)
+            @if ($otherTransaction->exhibition)
                 <div class="product-sell-content">
-                    <a href="/item/{{ $transaction->item->id }}" class="product-link"></a>
+                    <a href="/item/{{ $otherTransaction->id }}/message" class="product-link">
+                        
+                    
                     <div class="product-detail">
-                    <p>{{ $transaction->item->product_name }}</p>
+                        <p>{{ $otherTransaction->exhibition->product_name }}</p>
+
                     </div>
+                    </a>
                 </div>
-                @endif
-            @endforeach
-        @endif
-    </div>
+            @endif
+        @endforeach
+    </ul>
+</div>
     <div class="transaction-main">
         <div class="transaction-username">
             @php
@@ -46,7 +51,16 @@
                     document.getElementById('ratingModal').classList.add('hidden');
                 }
             </script>
-            <button type="button" class="btn btn-success" onclick="openRatingModal()">取引完了</button>
+            @php
+    $isBuyer = auth()->id() === $transaction->buyer_id;
+    $alreadyRated = $transaction->rating && $transaction->rating()->where('user_id', auth()->id())->get()->isNotEmpty();
+    $buyerRated = $transaction->rating && $transaction->rating()->where('user_id', $transaction->buyer_id)->get()->isNotEmpty();
+@endphp
+
+@if (!$alreadyRated && ($isBuyer || $buyerRated))
+    <button type="button" class="btn btn-success" onclick="openRatingModal()">取引完了</button>
+@endif
+            
             <div id="ratingModal" class="rating-modal hidden">
                 <div class="rating-content">
                     <h4>取引が完了しました。</h4>
@@ -86,16 +100,13 @@
                 @foreach ($messages as $msg)
                     <div class="{{ $msg->user_id === auth()->id() ? 'text-right' : 'text-left' }}">
                         <strong>{{ $msg->user->name }}</strong><br>
-                        <span>{{ $msg->content }}</span><br>
-                        <small>{{ $msg->created_at->format('H:i') }}
-                            @if ($msg->user_id === auth()->id())
-                                @if ($msg->is_read)
-                                    <span style="color: green;">既読</span>
-                                @else
-                                    <span style="color: gray;">未読</span>
-                                @endif
-                            @endif
-                        </small>
+                        <span id="message-content-{{ $msg->id }}">{{ $msg->content }}</span><br>
+
+                    @if ($msg->user_id === auth()->id())
+                    <button onclick="editMessage({{ $msg->id }})">編集</button>
+                    <button onclick="deleteMessage({{ $msg->id }})">削除</button>
+                    @endif
+
                         <hr>
                     </div>
                 @endforeach
@@ -109,7 +120,7 @@
                     {{ $message }}
                     @enderror
                 </p>
-                <textarea name="content" id="message-input" class="form-control" placeholder="メッセージを入力" rows="2">{{ old('content', session('form_input.content')) }}</textarea>
+                <textarea name="content" id="message-input" class="form-control" placeholder="取引メッセージを記入してください" rows="2">{{ old('content', $savedMessage) }}</textarea>
                 <label>
                     <input type="file" name="image" accept="image/*" class="form-control mt-2" style="display:none;">画像を選択
                 </label>
@@ -128,6 +139,44 @@
 
 @section('scripts')
 <script>
+window.editMessage = function(messageId) {
+    const currentContent = document.getElementById('message-content-' + messageId).innerText;
+    const newContent = prompt("新しい内容を入力してください:", currentContent);
+
+    if (newContent !== null) {
+        fetch(`/messages/${messageId}/edit`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('[name=_token]').value
+            },
+            body: JSON.stringify({ content: newContent })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                document.getElementById('message-content-' + messageId).innerText = newContent;
+            }
+        });
+    }
+}
+
+window.deleteMessage = function(messageId) {
+    fetch(`/messages/${messageId}`, {
+        method: 'DELETE',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('[name=_token]').value
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'deleted') {
+            document.getElementById('message-content-' + messageId).parentElement.remove();
+        }
+    });
+
+}
+
     const transactionId = {{ $transaction->id }};
     const userId = {{ auth()->id() }};
 

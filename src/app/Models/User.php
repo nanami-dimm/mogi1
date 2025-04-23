@@ -62,4 +62,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class);
     }
+
+    public function receivedRatings()
+{
+    return $this->hasMany(Rating::class, 'target_user_id');
+}
+
+public function getAverageRatingAttribute()
+{
+    $average = $this->receivedRatings()->avg('rating');
+    return $average ? round($average) : null;
+}
 }

@@ -3,20 +3,41 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Transaction;
-use App\Models\User;
-use App\Models\Exhibition;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class TransactionsTableSeeder extends Seeder
 {
     public function run()
     {
-        
-        Transaction::create([
-            'buyer_id' => 1,             // 購入者
-            'seller_id' => 2,            // 出品者
-            'exhibition_id' => 6,        // 取引商品ID
-            'status' => 'trading',       // ステータス：取引中
+        $now = Carbon::now();
+
+        DB::table('transactions')->insert([
+        [
+            'buyer_id' => 1,            
+            'seller_id' => 2,            
+            'exhibition_id' => 6,       
+            'status' => 'trading',      
+            'created_at' => $now,
+            'updated_at' => $now,
+        ],
+        [
+            'buyer_id' => 1,             
+            'seller_id' => 2,            
+            'exhibition_id' => 7,        
+            'status' => 'trading', 
+            'created_at' => $now,
+            'updated_at' => $now,
+        ],
+        [
+            'buyer_id' => 3,             
+            'seller_id' => 1,            
+            'exhibition_id' => 4,        
+            'status' => 'trading', 
+            'created_at' => $now,
+            'updated_at' => $now,
+        ],
         ]);
+        
     }
 }

@@ -41,4 +41,16 @@ class Exhibition extends Model
     {
         return $this->belongsTo(Transaction::class);
     }
+
+    public function transactionMessages()
+{
+    return $this->hasManyThrough(
+        \App\Models\TransactionMessage::class,
+        \App\Models\Transaction::class,
+        'exhibition_id',     
+        'transaction_id',    
+        'id',               
+        'id'                 
+    );
+}
 }
