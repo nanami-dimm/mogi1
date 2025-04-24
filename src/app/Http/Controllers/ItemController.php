@@ -12,6 +12,7 @@ use App\Models\Purchase;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\Changeaddress;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,9 +62,9 @@ class ItemController extends Controller
         //$productconditions = Productcondition::find($exhibitions_id);
         
         $users = User::latest()->first();
-
-        $comments = Comment::all();
-        return view('detail',compact('exhibitions','categories', 'condition','users','comments'));
+        
+        
+        return view('detail',compact('exhibitions','categories', 'condition','users',));
 
     }
 
@@ -107,5 +108,7 @@ class ItemController extends Controller
 
         return redirect('/');
     }
+
+    
 
 }

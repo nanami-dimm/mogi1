@@ -53,4 +53,9 @@ class Exhibition extends Model
         'id'                 
     );
 }
+    public function transaction()
+{
+    return $this->hasOne(Transaction::class);
 }
+}
+

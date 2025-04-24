@@ -62,6 +62,10 @@
             <a class="purchase-box" href="purchase/{{$exhibitions->id}}">購入手続きへ</a>  
             @endforeach
         </div>
+        <form action="{{ route('startTransaction', ['exhibitionId' => $exhibitions->id]) }}" method="POST">
+        @csrf
+        <button type="submit">出品者にチャットを送る</button>
+        </form>
         <div class="product-description">
             <label class="product-label" for="description">
                 商品説明</label>
@@ -104,11 +108,7 @@
                 <p>{{$users->name}}</p>
                 </div>
 
-                <div class="comments">
-                    @foreach($comments as $comment)
-                    {{$comments->product_comment}}
-                    @endforeach
-                </div>
+                
                 </div>
                 <form action="/item/{item_id}" method="post" >
                     @csrf

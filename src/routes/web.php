@@ -51,7 +51,9 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/transactions/{transactionId}',[TransactionController::class,'index']);
 
-    Route::get('item/{transactionId}/message', [TransactionController::class, 'message']);
+    Route::post('/start-transaction/{exhibitionId}', [TransactionController::class, 'startTransaction'])->name('startTransaction');
+
+    Route::get('item/{transactionId}/message', [TransactionController::class, 'message'])->name('message');
 
     Route::post('item/{transactionId}/message',[TransactionController::class,'send']);
 
@@ -66,7 +68,7 @@ Route::middleware('auth')->group(function(){
 
     Route::delete('/messages/{id}', [TransactionController::class, 'destroy']);
 
-   
+    
 
 
 });

@@ -170,6 +170,8 @@
     align-self: flex-end;
     margin-left: auto;
     text-align: left;
+    width: 400px;
+        height: 95px;
 }
 
 .partner-message {

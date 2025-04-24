@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\TransactionMessage;
 use App\Models\Transaction;
 use App\Events\MessageSent;
+use App\Models\Exhibition;
 use App\Mail\PurchaseCompletedMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -191,5 +192,34 @@ public function destroy($id)
     $message->delete();
 
     return response()->json(['status' => 'deleted']);
+}
+   public function startTransaction($exhibitionId)
+{
+    $user = auth()->user();
+    $exhibition = Exhibition::findOrFail($exhibitionId);
+
+    // 既に取引があるかチェック
+    $transaction = Transaction::where('exhibition_id', $exhibitionId)
+        ->where(function ($q) use ($user) {
+            $q->where('buyer_id', $user->id)
+              ->orWhere('seller_id', $user->id);
+        })
+        ->first();
+
+    if (!$transaction) {
+        // なければ新規作成
+        $transaction = Transaction::create([
+            'exhibition_id' => $exhibition->id,
+            'buyer_id' => $user->id,
+            'seller_id' => $exhibition->user_id,
+            'status' => 'trading',
+        ]);
+    }
+
+    // 出品情報のステータスも更新（必要に応じて）
+    $exhibition->status = 'trading';
+    $exhibition->save();
+
+    return redirect()->route('message', ['transactionId' => $transaction->id]);
 }
 }

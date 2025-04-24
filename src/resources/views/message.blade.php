@@ -38,7 +38,8 @@
         @if ($partner)
         <div class="partner-and-complete">
             <div class="partner-info">
-                <img src="{{ asset('storage/' . $partner->profile_image) }}"  class="icon" width="50" height="50">
+                <img src="{{ asset($partner->profile_image) }}" class="icon" style="width: 79px; height: 79px; border-radius: 50%; object-fit: cover;">
+                
                 <span>{{ $partner->name }}さんとの取引画面</span>
             </div>
         @endif
@@ -101,6 +102,9 @@
             <div class="chat-box" id="chat-box" style="height: 400px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px;">
                 @foreach ($messages as $msg)
                      <div class="chat-message {{ $msg->user_id === auth()->id() ? 'own-message' : 'partner-message' }}">
+                        <img 
+                    src="{{ asset($msg->user->profile_image ?? 'storage/images/default.png') }}" 
+                    alt="アイコン" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
                         <strong>{{ $msg->user->name }}</strong><br>
                         <span id="message-content-{{ $msg->id }}">{{ $msg->content }}</span><br>
 
