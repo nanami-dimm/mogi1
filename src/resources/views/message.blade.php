@@ -3,15 +3,15 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/message.css')}}">
 @endsection
-
+@section('link')
+@endsection
 
 @section('content')
 <div class="message">
-    <div class="other-transection">
-        <div class="sidebar">
-    <h3>その他の取引</h3>
-    <ul>
-        @foreach ($otherTransactions as $otherTransaction)
+    <div class="sidebar">
+        <h3>その他の取引</h3>
+        <ul>
+            @foreach ($otherTransactions as $otherTransaction)
             @if ($otherTransaction->exhibition)
                 <div class="product-sell-content">
                     <a href="/item/{{ $otherTransaction->id }}/message" class="product-link">
@@ -24,9 +24,10 @@
                     </a>
                 </div>
             @endif
-        @endforeach
-    </ul>
-</div>
+            @endforeach
+        </ul>
+        </div>
+    
     <div class="transaction-main">
         <div class="transaction-username">
             @php
@@ -35,12 +36,13 @@
             @endphp
 
         @if ($partner)
+        <div class="partner-and-complete">
             <div class="partner-info">
-                <img src="{{ asset('storage/' . $partner->profile_image) }}" alt="アイコン" class="icon" width="50" height="50">
+                <img src="{{ asset('storage/' . $partner->profile_image) }}"  class="icon" width="50" height="50">
                 <span>{{ $partner->name }}さんとの取引画面</span>
             </div>
         @endif
-        </div>
+        
         <div class="complete">
             <script>
                 function openRatingModal() {
@@ -58,9 +60,9 @@
 @endphp
 
 @if (!$alreadyRated && ($isBuyer || $buyerRated))
-    <button type="button" class="btn btn-success" onclick="openRatingModal()">取引完了</button>
+    <button type="button" class="btn btn-success" onclick="openRatingModal()">取引を完了する</button>
 @endif
-            
+</div>
             <div id="ratingModal" class="rating-modal hidden">
                 <div class="rating-content">
                     <h4>取引が完了しました。</h4>
@@ -98,7 +100,7 @@
         <div class="transaction-message">
             <div class="chat-box" id="chat-box" style="height: 400px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px;">
                 @foreach ($messages as $msg)
-                    <div class="{{ $msg->user_id === auth()->id() ? 'text-right' : 'text-left' }}">
+                     <div class="chat-message {{ $msg->user_id === auth()->id() ? 'own-message' : 'partner-message' }}">
                         <strong>{{ $msg->user->name }}</strong><br>
                         <span id="message-content-{{ $msg->id }}">{{ $msg->content }}</span><br>
 
@@ -120,16 +122,20 @@
                     {{ $message }}
                     @enderror
                 </p>
+                <div class="message-input-row">
                 <textarea name="content" id="message-input" class="form-control" placeholder="取引メッセージを記入してください" rows="2">{{ old('content', $savedMessage) }}</textarea>
-                <label>
-                    <input type="file" name="image" accept="image/*" class="form-control mt-2" style="display:none;">画像を選択
+                <label class="image-label">
+                    <input type="file" name="image" accept="image/*" class="form-control mt-2" style="display:none;">画像を追加
                 </label>
                 <p class="error-message">
                     @error('image')
                     {{ $message }}
                     @enderror
                 </p>
-                <button type="submit" class="btn btn-primary mt-2">送信</button>
+                <button type="submit" class="image-submit-button">
+    <img src="{{ asset('img/inputbuttun.svg') }}" alt="送信" class="send-icon">
+</button>
+            </div>
             </form>
         </div>
     </div>

@@ -9,22 +9,20 @@
     <div class="toppage-header-search">
         <form class="search-form" action="/search" method="get">
             @csrf
-            <input class="search-form__keyword-input" type="text" name="keyword" placeholder="何をお探しですか？" value="{{ $keyword ?? '' }}">
-           
+            <input class="search-form__keyword-input" type="text" name="keyword" placeholder="何をお探しですか？">
         </form>
     </div>
     <div class="toppage-header-nav">
-    @if (Auth::check())
-    
-        <form action="/logout" method="post" class="logout-form">
+
+        <form action="/logout" method="post">
         @csrf
-            <button class="logout-button">ログアウト</button>
+            <input class="header_link" type="submit" value="ログアウト">
         </form>
-      
-        <a class="mypage__link" href="/mypage">マイページ</a>
-    @endif
+
+         <a class="mypage__link" href="/mypage">マイページ</a>
+        
         <a class="sell__link" href="/sell">出品</a>
-    
+    </div>
 </div>
 @endsection
 

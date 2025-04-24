@@ -1,95 +1,59 @@
-
-
-
-
 .toppage-header {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    margin-left: 20px;
 }
 
-.toppage-header-search {
-    width: 330px;
-    height: 36.1px;
-
-    gap: 0px;
-    opacity: 0px;
-}
-
+/* ナビ内のリンク */
 .toppage-header-nav {
-    width: 463px;
-    height: 80px;
-    left: 1049px;
-    gap: 0px;
-    opacity: 0px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    white-space: nowrap;
+}
+
+/* 検索フォーム部分 */
+.toppage-header-search {
+    flex: 1;
 }
 
 .search-form {
-    width: 330px;
-    height: 50px;
-    top: 15px;
-    left: 31px;
-    gap: 0px;
-    border-radius: 5px 0px 0px 0px;
-    opacity: 0px;
-    background: #FFFFFF;
+    width: 100%;
+    display: flex;
 }
 
 .search-form__keyword-input {
-    font-family: Inter;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 29.05px;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    color: #000000;
+    width: 400px;
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 200px;
+}
+
+
+.header_link,
+.mypage__link,
+.sell__link {
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.header_link:hover,
+.mypage__link:hover,
+.sell__link:hover {
+    text-decoration: underline;
 }
 
 .logout-form {
-    width: 150px;
-    text-align: center;
+    margin: 0;
 }
-
-.logout-button {
-    font-family: Inter;
-    font-size: 24px;
-
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    color: #000000;
-}
-
-.mypage__link {
-    width: 300px;
-    font-family: Inter;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 29.05px;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    color: #FFFFFF;
-}
-
-.sell__link {
-    width: 100px;
-    height: 50px;
-    top: 18px;
-    left: 337px;
-    gap: 0px;
-    border-radius: 4px 0px 0px 0px;
-    opacity: 0px;
-    background: #FFFFFF;
-    font-family: Inter;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 29.05px;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    color: #000000;
-}
-
 label {
     display: inline-block;
     

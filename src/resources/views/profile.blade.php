@@ -28,31 +28,29 @@
 
 @section('content')
     <div class="user-info">
-        <div class="user-profile">
-           
-            <div class="user-image">
-                <img src="{{ asset($users->profile_image) }}"  class="img-content">
-            </div>
-          <div class="user-name">
-                <p>{{ $users->name }}</p>
-            </div>
-            @if (!is_null($users->average_rating))
-            <p>
-            評価:
-                @for ($i = 1; $i <= 5; $i++)
-                @if ($i <= $users->average_rating)
-                ⭐
-                @else
-                ☆
+    <div class="user-profile">
+        <div class="user-image">
+            <img src="{{ asset($users->profile_image) }}" class="img-content">
+        </div>
+
+        <div class="user-name-rating">
+            <div class="user-name-and-stars">
+                <span class="user-name">{{ $users->name }}</span>
+
+                @if (!is_null($users->average_rating))
+                    <div class="rating-star">
+                        @for ($i = 1; $i <= 5; $i++)
+                            <span>{{ $i <= $users->average_rating ? '⭐' : '☆' }}</span>
+                        @endfor
+                    </div>
                 @endif
-            @endfor
-            </p>
-            @endif
+            </div>
             <div class="profile_edit">
                 <a class="edit-form__btn btn" href="mypage/profile">プロフィールを編集</a>
             </div>
         </div>
-        <div class="toppage-list">
+    </div>
+        <div class="toppage-list-wrapper">
             <ul class="toppage-list">
                 
                 <li><a href="{{ url()->current() }}?status=sell">出品した商品</a></li>
