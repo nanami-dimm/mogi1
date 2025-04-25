@@ -51,6 +51,14 @@ mogi1.drawio.png に記載
 ##URL -開発環境 -商品一覧画面(トップ画面): http://localhost/ -会員登録画面: http://localhost/register -プロフィール画面: http//localhost/mypage
 -phpMyadmin: http://localhost:8080/
 
+## 商品を取引、チャットの利用をするとき
+
+1. **商品一覧画面** から商品を押下する  
+    商品一覧画面　(http://localhost/)
+
+2. **商品詳細画面** が開き、購入手続きの下部に「出品者にチャットを送る」ボタンを押下する  
+    商品詳細画面　(http://localhost/item/{item_id})
+
 ## ダミーユーザー
 
 ### CO01~CO05 出品者
