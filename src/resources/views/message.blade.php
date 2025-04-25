@@ -26,7 +26,7 @@
             @endif
             @endforeach
         </ul>
-        </div>
+    </div>
     
     <div class="transaction-main">
         <div class="transaction-username">
@@ -55,29 +55,57 @@
                 }
             </script>
             @php
-    $isBuyer = auth()->id() === $transaction->buyer_id;
-    $alreadyRated = $transaction->rating && $transaction->rating()->where('user_id', auth()->id())->get()->isNotEmpty();
-    $buyerRated = $transaction->rating && $transaction->rating()->where('user_id', $transaction->buyer_id)->get()->isNotEmpty();
-@endphp
+                $isBuyer = auth()->id() === $transaction->buyer_id;
+                $alreadyRated = $transaction->rating && $transaction->rating()->where('user_id', auth()->id())->get()->isNotEmpty();
+                $buyerRated = $transaction->rating && $transaction->rating()->where('user_id', $transaction->buyer_id)->get()->isNotEmpty();
+            @endphp
 
-@if (!$alreadyRated && ($isBuyer || $buyerRated))
-    <button type="button" class="btn btn-success" onclick="openRatingModal()">取引を完了する</button>
-@endif
-</div>
+            @if (!$alreadyRated && ($isBuyer || $buyerRated))
+                <button type="button" class="btn btn-success" onclick="openRatingModal()">取引を完了する</button>
+            @endif
+        </div>
             <div id="ratingModal" class="rating-modal hidden">
                 <div class="rating-content">
                     <h4>取引が完了しました。</h4>
                     <p class="thank">今回の取引相手はどうでしたか?</p>
                     <form action="{{ route('transaction.complete', $transaction->id) }}" method="POST">
                         @csrf
-                        <div class="stars">
+                        <div id="rating-stars">
                             @for ($i = 1; $i <= 5; $i++)
                                 <label>
-                                    <input type="radio" name="rating" value="{{ $i }}" required>
-                                    ⭐
+                                    <input type="radio" name="rating" value="{{ $i }}" required
+                                    style="display: none;">
+
+                                    <span class="star" data-value="{{ $i }}">☆</span>
                                 </label>
                             @endfor
                         </div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const stars = document.querySelectorAll('#rating-stars .star');
+
+                                    stars.forEach(star => {
+                                        star.addEventListener('click', () => {
+                                            const rating = parseInt(star.dataset.value);
+
+                                            stars.forEach((s, index) => {
+                                            s.textContent = (index < rating) ? '⭐' : '☆';
+                                            });
+
+               
+                                            stars.forEach(s => {
+                                            const sValue = parseInt(s.getAttribute('data-value'));
+                                            s.classList.toggle('selected', sValue <= rating);
+                                            });
+
+                
+                                            const radio = document.querySelector(`input[name="rating"][value="${rating}"]`);
+                                            if (radio) {
+                                            radio.checked = true;}
+                                        });
+                                    });
+                                });
+                        </script>
                         <button type="submit" class="btn btn-primary mt-2">送信</button>
                     </form>
                 </div>
@@ -127,19 +155,19 @@
                     @enderror
                 </p>
                 <div class="message-input-row">
-                <textarea name="content" id="message-input" class="form-control" placeholder="取引メッセージを記入してください" rows="2">{{ old('content', $savedMessage) }}</textarea>
-                <label class="image-label">
-                    <input type="file" name="image" accept="image/*" class="form-control mt-2" style="display:none;">画像を追加
-                </label>
-                <p class="error-message">
+                    <textarea name="content" id="message-input" class="form-control" placeholder="取引メッセージを記入してください" rows="2">{{ old('content', $savedMessage) }}</textarea>
+                    <label class="image-label">
+                        <input type="file" name="image" accept="image/*" class="form-control mt-2" style="display:none;">画像を追加
+                    </label>
+                    <p class="error-message">
                     @error('image')
                     {{ $message }}
                     @enderror
-                </p>
-                <button type="submit" class="image-submit-button">
-    <img src="{{ asset('img/inputbuttun.svg') }}" alt="送信" class="send-icon">
-</button>
-            </div>
+                    </p>
+                    <button type="submit" class="image-submit-button">
+                        <img src="{{ asset('img/inputbuttun.svg') }}" alt="送信" class="send-icon">
+                    </button>
+                </div>
             </form>
         </div>
     </div>

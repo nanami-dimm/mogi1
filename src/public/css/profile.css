@@ -141,10 +141,9 @@
     border-bottom: 2px solid transparent;
     transition: border-color 0.3s;
     font-family: Inter;
-        font-weight: 700;
-        
-        line-height: 100%;
-        letter-spacing: 0%;
+    font-weight: 700; 
+    line-height: 100%;
+    letter-spacing: 0%;
 }
 
 
@@ -155,12 +154,12 @@
 
 .product-detail{
     font-family: Inter;
-        font-size: 25px;
-        font-weight: 400;
-        line-height: 30.26px;
-        text-align: left;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 30.26px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
         
 }
 
@@ -214,52 +213,63 @@ a {
 
 @media (max-width: 1024px) {
     .user-info {
-        padding: 20px;
+        padding: 10px;
     }
 
     .user-profile {
-        margin-bottom: 15px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .user-name-rating {
+        margin-top: 15px;
     }
 
     .user-image img {
-        width: 120px;
-        height: 120px;
-    }
-
-    .user-name p {
-        font-size: 1.3rem;
+        width: 150px;
+        height: 150px;
     }
 
     .toppage-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .product-data {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .product-sell-content {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+
+    .product-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .toppage-header {
         flex-direction: column;
         align-items: center;
     }
 
-    .toppage-list-sell,
-    .toppage-list-buy {
+    .toppage-header-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .search-form__keyword-input {
         width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .product-data {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .product-sell-content {
-        margin-bottom: 20px;
-    }
-
-    .product-image {
-        max-width: 180px;
-        height: 180px;
-    }
-
-    .product-detail p {
-        font-size: 0.9rem;
-    }
-
-    .profile_edit .edit-form__btn {
-        font-size: 0.9rem;
-        padding: 8px 16px;
+        max-width: 300px;
     }
 }

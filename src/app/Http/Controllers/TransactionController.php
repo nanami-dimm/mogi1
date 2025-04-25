@@ -29,16 +29,16 @@ class TransactionController extends Controller
         }
         
         if ($status === 'trading') {
-        // 特定の取引IDに基づいて取引を取得
-        $transactions = Transaction::where('id', $transactionId) // 取引IDで絞り込む
+        
+        $transactions = Transaction::where('id', $transactionId) 
             ->where(function ($q) use ($user) {
                 $q->where('buyer_id', $user->id)
                   ->orWhere('seller_id', $user->id);
             })
-            ->with('exhibition')  // exhibition情報も取得
+            ->with('exhibition')  
             ->get();
     } else {
-        $transactions = collect();  // `trading` 以外のステータスの場合は空のコレクション
+        $transactions = collect();  
     }
 
        
@@ -58,7 +58,7 @@ class TransactionController extends Controller
             $q->where('buyer_id', $user->id)
               ->orWhere('seller_id', $user->id);
         })
-        ->where('id', '!=', $transactionId) // 現在の取引を除外
+        ->where('id', '!=', $transactionId) 
         ->with('exhibition')
         ->get();
     
@@ -112,7 +112,7 @@ class TransactionController extends Controller
         ? $transaction->seller_id
         : $transaction->buyer_id;
 
-    // ✅ 出品者の場合、購入者が評価済みでなければ完了させない
+    
     if ($myId === $transaction->seller_id) {
         $buyerRated = $transaction->rating()
             ->where('user_id', $transaction->buyer_id)
@@ -123,7 +123,7 @@ class TransactionController extends Controller
         }
     }
 
-    // ✅ すでに評価済みか確認
+   
     $alreadyRated = $transaction->rating()
         ->where('user_id', $myId)
         ->where('target_user_id', $targetId)
@@ -137,7 +137,7 @@ class TransactionController extends Controller
         ]);
     }
 
-    // ✅ 両者評価済みなら取引完了にする
+   
     $ratingCount = $transaction->rating()->count();
     if ($ratingCount >= 2) {
         $transaction->status = 'completed';
@@ -155,10 +155,10 @@ class TransactionController extends Controller
     public function saveDraft(Request $request)
 {
     $request->validate([
-        'content' => 'required|string|max:255',  // 必要に応じてバリデーションを追加
+        'content' => 'required|string|max:255',  
     ]);
 
-    // セッションに入力内容を保存
+    
     session()->put('form_input.content', $request->input('content'));
 
     return response()->json(['status' => 'success']);
@@ -168,7 +168,7 @@ class TransactionController extends Controller
 {
     $message = TransactionMessage::findOrFail($id);
 
-    // 自分のメッセージのみ編集できるように
+    
     if ($message->user_id !== auth()->id()) {
         return response()->json(['status' => 'unauthorized'], 403);
     }
@@ -179,12 +179,12 @@ class TransactionController extends Controller
     return response()->json(['status' => 'success']);
 }
 
-// 削除
+
 public function destroy($id)
 {
     $message = TransactionMessage::findOrFail($id);
 
-    // 自分のメッセージのみ削除できるように
+    
     if ($message->user_id !== auth()->id()) {
         return response()->json(['status' => 'unauthorized'], 403);
     }
@@ -198,7 +198,7 @@ public function destroy($id)
     $user = auth()->user();
     $exhibition = Exhibition::findOrFail($exhibitionId);
 
-    // 既に取引があるかチェック
+    
     $transaction = Transaction::where('exhibition_id', $exhibitionId)
         ->where(function ($q) use ($user) {
             $q->where('buyer_id', $user->id)
@@ -207,7 +207,7 @@ public function destroy($id)
         ->first();
 
     if (!$transaction) {
-        // なければ新規作成
+        
         $transaction = Transaction::create([
             'exhibition_id' => $exhibition->id,
             'buyer_id' => $user->id,
@@ -216,7 +216,7 @@ public function destroy($id)
         ]);
     }
 
-    // 出品情報のステータスも更新（必要に応じて）
+    
     $exhibition->status = 'trading';
     $exhibition->save();
 

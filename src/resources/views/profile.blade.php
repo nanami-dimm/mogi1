@@ -102,26 +102,24 @@
             <div class="product-sell-content">
                 <a href="/item/{{ $transaction->id }}/message" class="product-link">
                     <img src="{{ asset('storage/' . $transaction->exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
-                     @php
-                                    $unreadMessages = $transaction->exhibition->transactionMessages->where('is_read', false);
-                                    $unreadCount = $unreadMessages->count();
-                                @endphp
+                        @php
+                            $unreadMessages = $transaction->exhibition->transactionMessages->where('is_read', false);
+                            $unreadCount = $unreadMessages->count();
+                        @endphp
 
-                                @if ($unreadCount > 0)
-                                    <div class="notification-badge">
-                                        {{ $unreadCount }}
-                                    </div>
-                                @endif
-                            </a>
+                        @if ($unreadCount > 0)
+                            <div class="notification-badge">
+                                 {{ $unreadCount }}
+                            </div>
+                        @endif
+                </a>
                 <div class="product-detail">
                     <p>{{ $transaction->exhibition->product_name }}</p>
                 </div>
             </div>
         @endif
     @endforeach
-@endif
-
-
+    @endif
 
         </div>
     </div>

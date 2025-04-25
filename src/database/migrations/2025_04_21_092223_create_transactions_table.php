@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->foreignId('exhibition_id')->constrained()->onDelete('cascade');
             $table->foreignId('buyer_id')->constrained('users')->onDelete('cascade');  // 購入者
-        $table->foreignId('seller_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('seller_id')->constrained('users')->onDelete('cascade');
             $table->enum('status', ['trading', 'completed'])->default('trading');
 
             $table->timestamps();

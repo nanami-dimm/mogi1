@@ -64,7 +64,7 @@
         </div>
         <form action="{{ route('startTransaction', ['exhibitionId' => $exhibitions->id]) }}" method="POST">
         @csrf
-        <button type="submit">出品者にチャットを送る</button>
+        <button type="submit" class="chat-button">出品者にチャットを送る</button>
         </form>
         <div class="product-description">
             <label class="product-label" for="description">

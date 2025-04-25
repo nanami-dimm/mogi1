@@ -48,24 +48,24 @@ class ProfileController extends Controller
     ->with([
         'exhibition',
         'exhibition.transactionMessages' => function ($q) {
-            $q->orderByDesc('created_at'); // 最新のメッセージ順
+            $q->orderByDesc('created_at'); 
         }
     ])
     ->get();
 
-// 並び替え：常に最新メッセージ（未読でも既読でも）でソート
+
 $transactions = $transactions->sortByDesc(function ($transaction) {
     return optional($transaction->exhibition->transactionMessages->first())->created_at
         ?? $transaction->updated_at;
 });
         //dd($transactions);
-        // 未読メッセージの総数を取得
+        
         $unreadMessagesCount = $transactions->reduce(function ($carry, $transaction) {
     $unreadMessages = $transaction->exhibition->transactionMessages->where('is_read', false);
     return $carry + $unreadMessages->count();
 }, 0);
     } else {
-    // `trading` 以外のステータスの場合は空のコレクションをセット
+    
     $transactions = collect();
     $unreadMessagesCount = 0;
 }
@@ -99,13 +99,13 @@ $transactions = $transactions->sortByDesc(function ($transaction) {
         unset($form['_token']);
         $user = User::find($request->id);
 
-    // プロフィール画像の処理
+    
         if ($request->hasFile('profile_image')) {
         $path = $request->file('profile_image')->store('profile_images', 'public');
         $user->profile_image = $path;
         }
 
-        // フォームから受け取った情報を代入
+        
         $user->name = $request->name;
         $user->post_code = $request->post_code;
         $user->address = $request->address;

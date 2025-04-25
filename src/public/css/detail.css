@@ -254,6 +254,15 @@ button.comments-button {
     background: #FF5555;
     border: #ff5555;
 }
+
+.chat-button {
+    font-size: 25px;
+    background-color: #5590ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
 @media (max-width: 1024px) {
     .product-detail {
         flex-direction: column;
