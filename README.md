@@ -51,9 +51,29 @@ mogi1.drawio.png に記載
 ##URL -開発環境 -商品一覧画面(トップ画面): http://localhost/ -会員登録画面: http://localhost/register -プロフィール画面: http//localhost/mypage
 -phpMyadmin: http://localhost:8080/
 
-##ダミーユーザー
+## ダミーユーザー
 
--CO01~CO05出品者: name:'碇シンジ', email:'ikarisinji@test.com', password:'sinji1234', post_code:'123-4567', address:'第3新東京市芦ノ湖沿い', building:'NERV職員宿舎A棟'
--CO06~CO10出品者: name:'渚カヲル', email:'nagisakaworu@test.com', password:'kaworu3456', post_code:'234-5678', address:'月面基地タブハベース', building:'第5使徒監視区画'
--出品商品なし: name:'碇ゲンドウ', email:'ikarigendou@test.com', password:'gendou7890', post_code:'345-6789', address:'ネルフ本部地下深部', building:'司令室'
+### CO01~CO05 出品者
+- **名前**: 碇シンジ  
+- **メールアドレス**: ikarisinji@test.com  
+- **パスワード**: sinji1234  
+- **郵便番号**: 123-4567  
+- **住所**: 第3新東京市芦ノ湖沿い  
+- **建物**: NERV職員宿舎A棟
+
+### CO06~CO10 出品者
+- **名前**: 渚カヲル  
+- **メールアドレス**: nagisakaworu@test.com  
+- **パスワード**: kaworu3456  
+- **郵便番号**: 234-5678  
+- **住所**: 月面基地タブハベース  
+- **建物**: 第5使徒監視区画
+
+### 出品商品なし
+- **名前**: 碇ゲンドウ  
+- **メールアドレス**: ikarigendou@test.com  
+- **パスワード**: gendou7890  
+- **郵便番号**: 345-6789  
+- **住所**: ネルフ本部地下深部  
+- **建物**: 司令室
 
