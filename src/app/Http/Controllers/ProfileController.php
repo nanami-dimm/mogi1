@@ -60,9 +60,12 @@ $transactions = $transactions->sortByDesc(function ($transaction) {
 });
         //dd($transactions);
         
-        $unreadMessagesCount = $transactions->reduce(function ($carry, $transaction) {
-    $unreadMessages = $transaction->exhibition->transactionMessages->where('is_read', false);
+        $unreadMessagesCount = $transactions->reduce(function ($carry, $transaction) use ($users) {
+    $unreadMessages = $transaction->exhibition->transactionMessages
+        ->where('is_read', false)
+        ->where('user_id', '!=', $users->id); // 自分が送ったものは除外
     return $carry + $unreadMessages->count();
+    
 }, 0);
     } else {
     
@@ -77,7 +80,7 @@ $transactions = $transactions->sortByDesc(function ($transaction) {
           ->orWhere('seller_id', $users->id);
     })
     ->count();
-
+    
 
     return view('profile', compact('users', 'exhibitions', 'purchases', 'transactions', 'status','unreadCount','unreadMessagesCount'));
     }

@@ -60,7 +60,7 @@
 
                 <li><a href="{{ url()->current() }}?status=trading">取引中の商品
                     @if ($unreadMessagesCount > 0)
-  <span class="notification-badge">{{ $unreadMessagesCount }}</span>
+  <span class="badge">{{ $unreadMessagesCount }}</span>
 @endif
                 </a></li>
             </ul>
@@ -103,9 +103,11 @@
                 <a href="/item/{{ $transaction->id }}/message" class="product-link">
                     <img src="{{ asset('storage/' . $transaction->exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
                         @php
-                            $unreadMessages = $transaction->exhibition->transactionMessages->where('is_read', false);
-                            $unreadCount = $unreadMessages->count();
-                        @endphp
+    $unreadMessages = $transaction->exhibition->transactionMessages
+        ->where('is_read', false)
+        ->where('user_id', '!=', Auth::id()); // 自分が送ったメッセージは除外
+    $unreadCount = $unreadMessages->count();
+@endphp
 
                         @if ($unreadCount > 0)
                             <div class="notification-badge">
