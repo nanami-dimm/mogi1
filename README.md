@@ -41,7 +41,7 @@ DB_PASSWORD=laravel_pass
    'php artisan db:seed'
 
 ##使用技術(実行環境)
--PHP7.4.9
+-PHP8.3.9
 -laravel8.83.27
 -mysql8.0.26
 

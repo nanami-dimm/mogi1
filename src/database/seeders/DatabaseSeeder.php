@@ -24,8 +24,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call([ExhibitionCategorySeeder::class]);
 
-        
-
         $this->call([TransactionsTableSeeder::class]);
     }
 
