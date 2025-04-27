@@ -40,6 +40,10 @@ DB_PASSWORD=laravel_pass
    PHP コンテナ内にて
    'php artisan db:seed'
 
+8. 画像の表示
+   PHPコンテナ内にて
+   'php artisan storage:link'
+
 ##使用技術(実行環境)
 -PHP8.3.9
 -laravel8.83.27
