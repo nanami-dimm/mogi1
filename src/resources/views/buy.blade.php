@@ -55,7 +55,7 @@
         <div class="delivery">
             <label class="delivery" for="delovery-address">
                 配送先</label>
-                <a class="change-address" href="/purchase/address/{{$exhibitions->id}}">変更する</a>
+                <a class="change-address" >変更する</a>
             <div class="delivery-form" name="delivery" id="delivery-form">
             
                 <p>〒{{$users->post_code}}</p>
