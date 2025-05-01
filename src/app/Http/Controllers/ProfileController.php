@@ -123,16 +123,6 @@ $transactions = $transactions->sortByDesc(function ($transaction) {
         return redirect('/');
     }
 
-    public function change(){
-        return view('change');
-    }
-
-    public function postchange(Request $request)
-    {
-        $form = $request->all();
-        Changeaddress::find($request->id);
-        Changeaddress::create($form);
-        return redirect('/purchasse/address/{item_id}');
-    }
+    
 }
 

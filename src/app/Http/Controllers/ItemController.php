@@ -11,7 +11,7 @@ use App\Models\ExhibitionCategory;
 use App\Models\Purchase;
 use App\Models\User;
 use App\Models\Comment;
-use App\Models\Changeaddress;
+
 use App\Models\Transaction;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -76,8 +76,8 @@ class ItemController extends Controller
        
        $users = Auth::user();
        //dd($users);
-       $newaddress = Changeaddress::latest()->first();
-        return view('buy',compact('exhibitions','users','newaddress'));
+      
+        return view('buy',compact('exhibitions','users'));
     }
 
     public function search(Request $request){
