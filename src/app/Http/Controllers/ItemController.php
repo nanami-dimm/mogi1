@@ -107,13 +107,15 @@ class ItemController extends Controller
 
     
         $exhibition = Exhibition::find($form['exhibition_id']);
-        $exhibition->status = 'trading';
-        $exhibition->save();
-        Transaction::create([
-            'exhibition_id' => $form['exhibition_id'],
-            'buyer_id' => Auth::id(),
-            'seller_id' => $exhibition->user_id,
-        ]);
+    Transaction::create([
+        'exhibition_id' => $form['exhibition_id'],
+        'buyer_id' => Auth::id(),
+        'seller_id' => $exhibition->user_id,
+    ]);
+
+    // 取引が作成された後、商品のステータスを'トレーディング'に変更
+    $exhibition->status = 'trading';
+    $exhibition->save();
 
         return redirect('/');
     }

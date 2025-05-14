@@ -48,7 +48,7 @@
                 支払い方法</label>
             <select class="pay-form__select" name="paymethod_id" id="paymethod" >
                     <option value="konbini">コンビニ払い</option>
-                        <option value="card">クレジットカード払い</option>  
+                        
                    
                     </select>
         </div>
