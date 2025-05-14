@@ -83,6 +83,7 @@
         <div class="action-bar">
             <input class="buy-form_btn btn" type="submit" value="購入する">
         </div>
+        <input type="hidden" name="exhibition_id" value="{{ $exhibitions->id }}">
                     </form>
     </div>
 </div>

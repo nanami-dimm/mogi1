@@ -102,9 +102,18 @@ class ItemController extends Controller
     }
 
     public function postbuy(Request $request){
-
+        //dd($request->all());
         $form = $request->all();
-        $purchase = Purchase::create($form);
+
+    
+        $exhibition = Exhibition::find($form['exhibition_id']);
+        $exhibition->status = 'trading';
+        $exhibition->save();
+        Transaction::create([
+            'exhibition_id' => $form['exhibition_id'],
+            'buyer_id' => Auth::id(),
+            'seller_id' => $exhibition->user_id,
+        ]);
 
         return redirect('/');
     }
