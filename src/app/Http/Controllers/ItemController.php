@@ -107,7 +107,7 @@ class ItemController extends Controller
 
     
         $exhibition = Exhibition::find($form['exhibition_id']);
-    Transaction::create([
+        $transaction = Transaction::create([
         'exhibition_id' => $form['exhibition_id'],
         'buyer_id' => Auth::id(),
         'seller_id' => $exhibition->user_id,
@@ -117,7 +117,7 @@ class ItemController extends Controller
     $exhibition->status = 'trading';
     $exhibition->save();
 
-        return redirect('/');
+    return redirect("/item/{$transaction->id}/message");
     }
 
     
