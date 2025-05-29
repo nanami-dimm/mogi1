@@ -251,7 +251,8 @@ window.deleteMessage = function(messageId) {
             document.getElementById('message-input').value = '';
         });
     });
-
+    </script>
+    <script>
     
 
     document.addEventListener("DOMContentLoaded", function () {
