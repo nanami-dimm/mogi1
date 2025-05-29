@@ -78,10 +78,13 @@ class TransactionController extends Controller
     session()->put('form_input.content', $request->input('content'));
 
 
+    
     $imagePath = null;
     if ($request->hasFile('image')) {
         $imagePath = $request->file('image')->store('messages', 'public');
     }
+
+    
 
     $message=TransactionMessage::create([
         'user_id' => auth()->id(),

@@ -9,7 +9,7 @@ class TransactionMessage extends Model
 {
     use HasFactory;
     protected $fillable= [
-        'transaction_id','user_id','content','is_read',
+        'transaction_id','user_id','content','is_read','image'
     ];
 
     public function user()

@@ -62,10 +62,7 @@
             <a class="purchase-box" href="purchase/{{$exhibitions->id}}">購入手続きへ</a>  
             @endforeach
         </div>
-        <form action="{{ route('startTransaction', ['exhibitionId' => $exhibitions->id]) }}" method="POST">
-        @csrf
-        <button type="submit" class="chat-button">出品者にチャットを送る</button>
-        </form>
+        
         <div class="product-description">
             <label class="product-label" for="description">
                 商品説明</label>

@@ -100,7 +100,7 @@
     @foreach ($transactions as $transaction)
         @if ($transaction->exhibition)
             <div class="product-sell-content">
-                <a href="/item/{{ $transaction->id }}/message" class="product-link">
+            <a href="/item/{{ $transaction->id }}/message" class="product-link">
                     <img src="{{ asset('storage/' . $transaction->exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
                         @php
     $unreadMessages = $transaction->exhibition->transactionMessages

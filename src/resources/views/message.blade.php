@@ -8,25 +8,22 @@
 
 @section('content')
 <div class="message">
-    <div class="sidebar">
-        <h3>その他の取引</h3>
-        <ul>
-            @foreach ($otherTransactions as $otherTransaction)
+<div class="sidebar">
+    <h3>その他の取引</h3>
+    <ul>
+        @foreach ($otherTransactions as $otherTransaction)
             @if ($otherTransaction->exhibition)
-                <div class="product-sell-content">
+                <li class="product-sell-content">
                     <a href="/item/{{ $otherTransaction->id }}/message" class="product-link">
-                        
-                    
-                    <div class="product-detail">
-                        <p>{{ $otherTransaction->exhibition->product_name }}</p>
-
-                    </div>
+                        <div class="product-detail">
+                            <p>{{ $otherTransaction->exhibition->product_name }}</p>
+                        </div>
                     </a>
-                </div>
+                </li>
             @endif
-            @endforeach
-        </ul>
-    </div>
+        @endforeach
+    </ul>
+</div>
     
     <div class="transaction-main">
         <div class="transaction-username">
@@ -135,7 +132,9 @@
                     alt="アイコン" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
                         <strong>{{ $msg->user->name }}</strong><br>
                         <span id="message-content-{{ $msg->id }}">{{ $msg->content }}</span><br>
-
+                        @if ($msg->image)
+            <img src="{{ asset('storage/' . $msg->image) }}" alt="添付画像" style="max-width: 200px; margin-top: 5px;">
+        @endif
                     @if ($msg->user_id === auth()->id())
                     <button onclick="editMessage({{ $msg->id }})">編集</button>
                     <button onclick="deleteMessage({{ $msg->id }})">削除</button>
@@ -146,7 +145,7 @@
                 @endforeach
             </div>
 
-            <form id="message-form" method="post">
+            <form id="message-form" method="post" enctype="multipart/form-data"  action="{{ route('message.post', ['transactionId' => $transaction->id]) }}">
                 @csrf
                 <input type="hidden" name="transaction_id" value="{{ $transaction->id }}">
                 <p class="error-message">
@@ -155,7 +154,7 @@
                     @enderror
                 </p>
                 <div class="message-input-row">
-                    <textarea name="content" id="message-input" class="form-control" placeholder="取引メッセージを記入してください" rows="2">{{ old('content', $savedMessage) }}</textarea>
+                    <textarea name="content" id="message-input" class="form-control" placeholder="取引メッセージを記入してください" rows="2">{{ old('content') }}</textarea>
                     <label class="image-label">
                         <input type="file" name="image" accept="image/*" class="form-control mt-2" style="display:none;">画像を追加
                     </label>
@@ -175,7 +174,19 @@
 
 @endsection
 
+
 @section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/7.2.0/pusher.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/laravel-echo/dist/echo.iife.js"></script>
+<script>
+    window.Pusher = Pusher;
+    window.Echo = new Echo({
+        broadcaster: 'pusher',
+        key: '{{ env('PUSHER_APP_KEY') }}',
+        cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
+        forceTLS: true
+    });
+</script>
 <script>
 window.editMessage = function(messageId) {
     const currentContent = document.getElementById('message-content-' + messageId).innerText;
@@ -241,20 +252,27 @@ window.deleteMessage = function(messageId) {
         });
     });
 
-    const messageInput = document.getElementById('message-input');
-    if (messageInput) {
-        messageInput.addEventListener('input', function () {
-            const content = this.value;
+    
 
-            fetch('/messages/save-draft', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('[name=_token]').value
-                },
-                body: JSON.stringify({ content: content })
-            });
-        });
+    document.addEventListener("DOMContentLoaded", function () {
+    const input = document.getElementById("message-input");
+    const storageKey = "message_draft_{{ auth()->id() }}_{{ $transaction->id }}";
+
+    
+    const savedDraft = sessionStorage.getItem(storageKey);
+    if (savedDraft !== null) {
+        input.value = savedDraft;
     }
+
+    
+    input.addEventListener("input", () => {
+        sessionStorage.setItem(storageKey, input.value);
+    });
+
+    
+    input.form.addEventListener("submit", () => {
+        sessionStorage.removeItem(storageKey);
+    });
+    });
 </script>
 @endsection

@@ -101,25 +101,47 @@ class ItemController extends Controller
         return view('detail');
     }
 
-    public function postbuy(Request $request){
-        //dd($request->all());
-        $form = $request->all();
+    public function postbuy(Request $request)
+{
+    $form = $request->all();
+    $userId = Auth::id();
 
-    
-        $exhibition = Exhibition::find($form['exhibition_id']);
-        $transaction = Transaction::create([
-        'exhibition_id' => $form['exhibition_id'],
-        'buyer_id' => Auth::id(),
+    $exhibition = Exhibition::findOrFail($form['exhibition_id']);
+
+    // 出品者自身は購入不可
+    if ($exhibition->user_id === $userId) {
+        return redirect()->back()->with('error', '自分が出品した商品は購入できません。');
+    }
+
+    // すでにこの商品に対する取引が存在するか
+    $existingTransaction = Transaction::where('exhibition_id', $exhibition->id)
+        ->where('status', 'trading')
+        ->first();
+
+    if ($existingTransaction) {
+        // 自分が関係者ならそのままチャットへ
+        if ($existingTransaction->buyer_id === $userId || $existingTransaction->seller_id === $userId) {
+            return redirect()->route('transaction.message', ['transactionId' => $existingTransaction->id]);
+        }
+
+        // 他のユーザーがすでに取引中なら購入不可
+        return redirect()->back()->with('error', 'この商品はすでに他のユーザーと取引中です。');
+    }
+
+    // 取引を新規作成
+    $transaction = Transaction::create([
+        'exhibition_id' => $exhibition->id,
+        'buyer_id' => $userId,
         'seller_id' => $exhibition->user_id,
+        'status' => 'trading',
     ]);
 
-    // 取引が作成された後、商品のステータスを'トレーディング'に変更
+    // 出品ステータス更新
     $exhibition->status = 'trading';
     $exhibition->save();
 
-    return redirect("/item/{$transaction->id}/message");
-    }
-
+    return redirect()->route('transaction.message', ['transactionId' => $transaction->id]);
+}
     
 
 }

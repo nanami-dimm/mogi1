@@ -51,9 +51,9 @@ Route::middleware('auth')->group(function(){
 
     Route::post('/start-transaction/{exhibitionId}', [TransactionController::class, 'startTransaction'])->name('startTransaction');
 
-    Route::get('item/{transactionId}/message', [TransactionController::class, 'message'])->name('message');
+    Route::get('/item/{transactionId}/message', [TransactionController::class, 'message'])->name('transaction.message');
 
-    Route::post('item/{transactionId}/message',[TransactionController::class,'send']);
+    Route::post('/item/{transactionId}/message', [TransactionController::class, 'send'])->name('message.post');
 
     Route::post('/transaction/{id}/complete', [TransactionController::class, 'complete'])->name('transaction.complete');
 
