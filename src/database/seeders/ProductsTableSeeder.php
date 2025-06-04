@@ -25,6 +25,8 @@ class ProductsTableSeeder extends Seeder
             'product_price' => '15,000',
             'productcondition_id' => '1',
             'user_id' => 1,
+            'status' => 'sell',
+            
             ],
             [
             'product_name' => 'HDD',
@@ -33,6 +35,8 @@ class ProductsTableSeeder extends Seeder
             'product_price' => '5,000',
             'productcondition_id' => '2',
             'user_id' => 1,
+            'status' => 'sell',
+            
             ],
             [
             'product_name' => '玉ねぎ3束',
@@ -41,6 +45,7 @@ class ProductsTableSeeder extends Seeder
             'product_price' => '300',
             'productcondition_id' => '3',
             'user_id' => 1,
+            'status' => 'sell',
             ],
             [
             'product_name' => '革靴',
@@ -49,6 +54,8 @@ class ProductsTableSeeder extends Seeder
             'product_price' => '4,000',
             'productcondition_id' => '4',
             'user_id' => 1,
+            'status' => 'trading',
+            
             ],
             [
             'product_name' => 'ノートPC',
@@ -57,6 +64,7 @@ class ProductsTableSeeder extends Seeder
             'product_price' => '45,000',
             'productcondition_id' => '1',
             'user_id' => 1,
+            'status' => 'sell',
             ],
             [
             'product_name' => 'マイク',
@@ -65,6 +73,7 @@ class ProductsTableSeeder extends Seeder
             'product_price' => '8,000',
             'productcondition_id' => '2',
             'user_id' => 2,
+            'status' => 'trading',
             ],
             [
             'product_name' => 'ショルダーバッグ',
@@ -73,6 +82,7 @@ class ProductsTableSeeder extends Seeder
             'product_price' => '3,500',
             'productcondition_id' => '3',
             'user_id' => 2,
+            'status' => 'trading',
             ],
             [
             'product_name' => 'タンブラー',
@@ -81,6 +91,7 @@ class ProductsTableSeeder extends Seeder
             'product_price' => '500',
             'productcondition_id' => '4',
             'user_id' => 2,
+            'status' => 'sell',
             ],
             [
             'product_name' => 'コーヒーミル',
@@ -89,6 +100,7 @@ class ProductsTableSeeder extends Seeder
             'product_price' => '4,000',
             'productcondition_id' => '1',
             'user_id' => 2,
+            'status' => 'sell',
             ],
             [
             'product_name' => 'メイクセット',
@@ -97,6 +109,7 @@ class ProductsTableSeeder extends Seeder
             'product_price' => '2,500',
             'productcondition_id' => '2',
             'user_id' => 2,
+            'status' => 'sell',
             ],
         ]);
     }

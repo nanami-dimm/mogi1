@@ -39,10 +39,7 @@ class TransactionsTableSeeder extends Seeder
         ],
         ]);
 
-        DB::table('exhibitions')->whereIn('id', [6, 7, ])->update([
-            'status' => 'trading',
-            'updated_at' => $now,
-        ]);
+        DB::table('exhibitions')->whereIn('id', [6, 7, 4])->update(['status' => 'trading']);
         
     }
 }

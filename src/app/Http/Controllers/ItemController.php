@@ -55,11 +55,12 @@ class ItemController extends Controller
     public function detail($exhibitions_id)
     {
         $exhibitions = Exhibition::find($exhibitions_id);
-       
+
        $categories = Category::find($exhibitions_id);
         
        $condition = Exhibition::with('productCondition')->findOrFail($exhibitions_id);
-        //$productconditions = Productcondition::find($exhibitions_id);
+
+       
         
         $users = User::latest()->first();
         
@@ -102,33 +103,34 @@ class ItemController extends Controller
     }
 
     public function postbuy(Request $request)
-{
+{   
+    
     $form = $request->all();
     $userId = Auth::id();
 
     $exhibition = Exhibition::findOrFail($form['exhibition_id']);
 
-    // 出品者自身は購入不可
+    
     if ($exhibition->user_id === $userId) {
         return redirect()->back()->with('error', '自分が出品した商品は購入できません。');
     }
 
-    // すでにこの商品に対する取引が存在するか
+    
     $existingTransaction = Transaction::where('exhibition_id', $exhibition->id)
         ->where('status', 'trading')
         ->first();
-
-    if ($existingTransaction) {
-        // 自分が関係者ならそのままチャットへ
-        if ($existingTransaction->buyer_id === $userId || $existingTransaction->seller_id === $userId) {
-            return redirect()->route('transaction.message', ['transactionId' => $existingTransaction->id]);
+        
+        if ($existingTransaction) {
+            
+            if ($existingTransaction->buyer_id === $userId || $existingTransaction->seller_id === $userId) {
+                return redirect()->route('transaction.message', ['transactionId' => $existingTransaction->id]);
+            }
+    
+            // 他人の取引なのでブロック
+            return redirect()->back()->with('error', 'この商品はすでに他のユーザーと取引中です。');
         }
-
-        // 他のユーザーがすでに取引中なら購入不可
-        return redirect()->back()->with('error', 'この商品はすでに他のユーザーと取引中です。');
-    }
-
-    // 取引を新規作成
+        
+ 
     $transaction = Transaction::create([
         'exhibition_id' => $exhibition->id,
         'buyer_id' => $userId,
@@ -136,7 +138,7 @@ class ItemController extends Controller
         'status' => 'trading',
     ]);
 
-    // 出品ステータス更新
+    
     $exhibition->status = 'trading';
     $exhibition->save();
 

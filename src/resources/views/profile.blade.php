@@ -69,17 +69,19 @@
 
     {{-- 出品商品 --}}
     @if ($status !== 'buy')
-        @foreach ($exhibitions as $exhibition)
-            <div class="product-sell-content">
-                <a href="/item/{{ $exhibition->id }}" class="product-link">
-                    <img src="{{ asset('storage/' . $exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
-                </a>
-                <div class="product-detail">
-                    <p>{{ $exhibition->product_name }}</p>
-                </div>
+    @foreach ($exhibitions as $exhibition)
+        @if ($exhibition->status !== 'trading') {{-- 🔽 tradingを除外 --}}
+        <div class="product-sell-content">
+            <a href="/item/{{ $exhibition->id }}" class="product-link">
+                <img src="{{ asset('storage/' . $exhibition->product_image) }}" alt="商品画像" class="product-image" width="200" height="190">
+            </a>
+            <div class="product-detail">
+                <p>{{ $exhibition->product_name }}</p>
             </div>
-        @endforeach
-    @endif
+        </div>
+        @endif
+    @endforeach
+@endif
 
     {{-- 購入商品 --}}
     @if ($status === 'buy')
